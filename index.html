@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
@@ -45,10 +46,18 @@
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center gradient-bg relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-20 left-10 w-32 h-32 bg-slate-300 rounded-full animate-pulse-slow"></div>
-            <div class="absolute top-40 right-20 w-20 h-20 bg-slate-400 rounded-full animate-float"></div>
-            <div class="absolute bottom-20 left-1/4 w-16 h-16 bg-slate-300 rounded-full animate-pulse-slow"></div>
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+        <div class="wave-container absolute bottom-0 left-0 w-full overflow-hidden">
+            <svg viewBox="0 24 150 28" preserveAspectRatio="none" class="wave-svg">
+                <defs>
+                    <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z" />
+                </defs>
+                <g class="wave-parallax">
+                    <use href="#wave-path" x="48" y="0" fill="rgba(255,255,255,0.6)" />
+                    <use href="#wave-path" x="48" y="3" fill="rgba(148, 163, 184, 0.3)" />
+                    <use href="#wave-path" x="48" y="5" fill="rgba(255,255,255,0.8)" />
+                </g>
+            </svg>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
