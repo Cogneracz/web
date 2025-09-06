@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognera - Efektivní vývoj software</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <img src="images/logo-128.png" alt="Cognera" class="h-10 w-auto">
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-slate-800 font-medium transition-colors">Domů</a>
+                    <a href="#about" class="text-gray-700 hover:text-slate-800 font-medium transition-colors">O nás</a>
+                    <a href="#services" class="text-gray-700 hover:text-slate-800 font-medium transition-colors">Služby</a>
+                    <a href="#why-us" class="text-gray-700 hover:text-slate-800 font-medium transition-colors">Proč my</a>
+                    <a href="#contact" class="text-gray-700 hover:text-slate-800 font-medium transition-colors">Kontakt</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-slate-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-slate-800">Domů</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-slate-800">O nás</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-slate-800">Služby</a>
+                <a href="#why-us" class="block py-2 text-gray-700 hover:text-slate-800">Proč my</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-slate-800">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center gradient-bg relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-slate-300 rounded-full animate-pulse-slow"></div>
+            <div class="absolute top-40 right-20 w-20 h-20 bg-slate-400 rounded-full animate-float"></div>
+            <div class="absolute bottom-20 left-1/4 w-16 h-16 bg-slate-300 rounded-full animate-pulse-slow"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <div class="mb-8 animate-float">
+                    <img src="images/logo-256.png" alt="Cognera" class="h-24 w-auto mx-auto mb-6">
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-slate-800 mb-6">
+                    Cognera
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Efektivní vývoj software s týmem seniórních vývojářů. 
+                    Rychle, kvalitně a profesionálně.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#about" class="bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-all transform hover:scale-105 shadow-2xl border border-gray-300">
+                        <i class="fas fa-rocket mr-2"></i>Zjistit více
+                    </a>
+                    <a href="#services" class="border-2 border-black text-black bg-white px-8 py-4 rounded-full font-semibold hover:bg-black hover:text-white transition-all transform hover:scale-105 shadow-md">
+                        <i class="fas fa-code mr-2"></i>Naše služby
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">O naší firmě</h2>
+                <div class="w-24 h-1 section-divider mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Jsme tým zkušených seniórních vývojářů, kteří se specializují na vytváření vysoce kvalitního software. 
+                    Naše mise je dodávat řešení, která překračují očekávání našich klientů.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-100 card-hover">
+                    <div class="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl text-slate-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Seniórní tým</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Náš tým tvoří výhradně zkušení seniórní vývojáři s mnohaletými zkušenostmi v různých technologiích.
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-slate-100 card-hover">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bolt text-2xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Rychlost</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Efektivní procesy a zkušenosti nám umožňují dodávat kvalitní řešení v rekordním čase.
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-stone-50 to-gray-100 card-hover">
+                    <div class="w-16 h-16 bg-stone-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-gem text-2xl text-stone-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Kvalita</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Každý projekt prochází důkladným testováním a code review pro zajištění nejvyšší kvality.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Naše služby</h2>
+                <div class="w-24 h-1 section-divider mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Poskytujeme komplexní služby v oblasti vývoje software s důrazem na moderní technologie a best practices.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-desktop text-xl text-slate-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Webové aplikace</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Moderní, responzivní webové aplikace postavené na nejnovějších technologiích a frameworcích.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Mobilní aplikace</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nativní i cross-platform mobilní aplikace pro iOS a Android s výjimečným uživatelským zážitkem.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-stone-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-xl text-stone-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Backend systémy</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Robustní a škálovatelné backend řešení s REST API, microservices a cloud infrastrukturou.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-zinc-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-xl text-zinc-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Databázové systémy</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Design a optimalizace databází pro maximální výkon a bezpečnost vašich dat.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-xl text-neutral-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cloud řešení</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nasazení a správa aplikací v cloudových prostředích s důrazem na bezpečnost a dostupnost.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Konzultace & audit</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Technické konzultace, code review a audit existujících řešení pro zlepšení výkonu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Proč si vybrat nás</h2>
+                <div class="w-24 h-1 section-divider mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Kombinujeme roky zkušeností s moderními technologiemi pro dosažení výjimečných výsledků.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-check text-slate-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Zkušený tým</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Náš tým se skládá výhradně ze seniórních vývojářů s průměrnou praxí více než 8 let v oboru.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-check text-gray-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Rychlé dodání</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Efektivní procesy a zkušenosti nám umožňují dodávat projekty rychleji než konkurence.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-stone-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-check text-stone-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Nejvyšší kvalita</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Každý řádek kódu prochází důkladným review a testováním pro zajištění bezchybného fungování.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-check text-zinc-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Moderní technologie</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Využíváme nejnovější technologie a best practices pro budoucnost vašich projektů.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl p-8 text-white">
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold mb-6">Připraveni začít?</h3>
+                            <p class="text-slate-300 mb-8 leading-relaxed">
+                                Rádi si s vámi promluvíme o vašem projektu a najdeme nejlepší řešení pro vaše potřeby.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div class="bg-white/10 rounded-lg p-4">
+                                    <div class="text-2xl font-bold">50+</div>
+                                    <div class="text-sm text-slate-300">Dokončených projektů</div>
+                                </div>
+                                <div class="bg-white/10 rounded-lg p-4">
+                                    <div class="text-2xl font-bold">15+</div>
+                                    <div class="text-sm text-slate-300">Let zkušeností</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Kontakt</h2>
+                <div class="w-24 h-1 section-divider mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Rádi si s vámi promluvíme o vašem projektu. Neváhejte nás kontaktovat.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope text-xl text-slate-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-800">Email</h3>
+                            <a href="mailto:info@cognera.cz" class="text-slate-600 hover:text-slate-800 transition-colors">info@cognera.cz</a>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        Napište nám email s popisem vašeho projektu a my se vám ozveme do 24 hodin.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-phone text-xl text-slate-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-800">Telefon</h3>
+                            <a href="tel:+420777123456" class="text-slate-600 hover:text-slate-800 transition-colors">+420 777 123 456</a>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        Zavolejte nám pro rychlou konzultaci nebo domluvení osobní schůzky.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="mb-6">
+                        <span class="text-xl font-bold">Cognera s.r.o.</span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Efektivní vývoj software s týmem seniórních vývojářů. 
+                        Rychle, kvalitně a profesionálně.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Rychlé odkazy</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Domů</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">O nás</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Služby</a></li>
+                        <li><a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Proč my</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gray-400 mr-3"></i>
+                            <a href="mailto:info@cognera.cz" class="text-gray-300 hover:text-white transition-colors">info@cognera.cz</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-gray-400 mr-3"></i>
+                            <a href="tel:+420777123456" class="text-gray-300 hover:text-white transition-colors">+420 777 123 456</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Technologie</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">React</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Node.js</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">.NET</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Java</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Scala</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Haskell</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">AWS</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Cognera. Všechna práva vyhrazena.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
