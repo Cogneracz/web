@@ -66,7 +66,7 @@ particlesJS('particles-js', {
             }
         },
         color: {
-            value: ['#64748b', '#94a3b8', '#3b82f6']
+            value: ['#2563eb', '#64748b', '#4f46e5']
         },
         shape: {
             type: 'circle',
@@ -99,7 +99,7 @@ particlesJS('particles-js', {
             enable: true,
             distance: 150,
             color: '#94a3b8',
-            opacity: 0.3,
+            opacity: 0.15,
             width: 1
         },
         move: {
@@ -164,25 +164,25 @@ function createFloatingShapes() {
     const heroSection = document.querySelector('#home');
     const shapesContainer = document.createElement('div');
     shapesContainer.className = 'floating-shapes';
-    
+
     for (let i = 0; i < 3; i++) {
         const shape = document.createElement('div');
-        shape.className = 'floating-shape';
+        shape.className = `floating-shape ${i === 1 ? 'floating-shape-indigo' : ''}`;
         shapesContainer.appendChild(shape);
     }
-    
+
     heroSection.appendChild(shapesContainer);
 }
 
 // Enhanced scroll animations
 function addScrollAnimations() {
     const sections = document.querySelectorAll('section');
-    
+
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                
+
                 // Add staggered animation to cards
                 const cards = entry.target.querySelectorAll('.card-hover');
                 cards.forEach((card, index) => {
@@ -197,7 +197,7 @@ function addScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     sections.forEach(section => {
         scrollObserver.observe(section);
     });

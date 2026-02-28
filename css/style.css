@@ -1,9 +1,32 @@
-body {
-    font-family: 'Inter', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-blue: #2563eb;
+    --primary-glow: rgba(37, 99, 235, 0.4);
+    --secondary-indigo: #4f46e5;
+    --premium-shadow-base: rgba(148, 163, 184, 0.15);
+    --premium-shadow-hover: rgba(148, 163, 184, 0.25);
+    --glass-bg-light: rgba(255, 255, 255, 0.75);
+    --glass-border-light: rgba(255, 255, 255, 0.6);
 }
 
-.gradient-bg {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+body {
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    /* slate-700 */
+    background-color: #fafafa;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.outfit-font {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
 }
 
 .text-gradient {
@@ -13,77 +36,97 @@ body {
     background-clip: text;
 }
 
-.card-hover {
-    transition: all 0.3s ease;
+.text-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-indigo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.card-hover:hover {
+/* Premium Light Cards */
+.premium-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px var(--premium-shadow-base), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.premium-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 11;
+}
+
+.premium-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px var(--premium-shadow-hover), 0 0 0 1px rgba(37, 99, 235, 0.1);
 }
 
+/* Glass Typography specific */
+.glass-nav {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* Section Dividers */
+.section-divider {
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    height: 2px;
+    border-radius: 2px;
+}
+
+.section-divider-primary {
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+    box-shadow: 0 0 8px var(--primary-glow);
+    height: 3px;
+    border-radius: 3px;
+}
+
+/* Float Animations */
 .animate-float {
     animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(1deg);
+    }
 }
 
-.animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Background Gradients */
+.gradient-bg-light {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+    position: relative;
 }
 
-.section-divider {
-    background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-}
-
-.glass-nav {
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    background: rgba(255, 255, 255, 0.4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-/* Particle Effects */
-#particles-js {
+.gradient-bg-light::before {
+    content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    background: radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+    pointer-events: none;
     z-index: 0;
 }
 
-/* Wave Animation */
-.wave-container {
-    height: 150px;
-    z-index: 1;
-}
-
-.wave-svg {
-    width: 150%;
-    height: 100%;
-    animation: wave-movement 18s ease-in-out infinite;
-}
-
-.wave-parallax use:nth-child(1) {
-    animation: wave-movement 12s ease-in-out infinite reverse;
-}
-
-.wave-parallax use:nth-child(2) {
-    animation: wave-movement 15s ease-in-out infinite;
-}
-
-.wave-parallax use:nth-child(3) {
-    animation: wave-movement 20s ease-in-out infinite reverse;
-}
-
-@keyframes wave-movement {
-    0%, 100% { transform: translateX(0px); }
-    50% { transform: translateX(-40px); }
-}
-
-/* Enhanced floating animations */
+/* Floating ambient background shapes */
 .floating-shapes {
     position: absolute;
     top: 0;
@@ -92,67 +135,144 @@ body {
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
 }
 
 .floating-shape {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.2), rgba(203, 213, 225, 0.15));
-    animation: float-complex 12s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(148, 163, 184, 0.1);
+    background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.06), transparent);
+    animation: float-complex 18s ease-in-out infinite;
+    filter: blur(16px);
+}
+
+.floating-shape-indigo {
+    background: radial-gradient(circle at 30% 30%, rgba(79, 70, 229, 0.05), transparent);
 }
 
 .floating-shape:nth-child(1) {
-    width: 80px;
-    height: 80px;
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 18s;
+    width: 400px;
+    height: 400px;
+    top: -5%;
+    left: -10%;
+    animation-duration: 25s;
 }
 
 .floating-shape:nth-child(2) {
-    width: 120px;
-    height: 120px;
-    top: 60%;
-    right: 15%;
-    animation-delay: -6s;
-    animation-duration: 22s;
+    width: 500px;
+    height: 500px;
+    top: 40%;
+    right: -15%;
+    animation-delay: -5s;
+    animation-duration: 30s;
 }
 
 .floating-shape:nth-child(3) {
-    width: 60px;
-    height: 60px;
-    top: 80%;
+    width: 300px;
+    height: 300px;
+    bottom: 10%;
     left: 30%;
     animation-delay: -12s;
-    animation-duration: 16s;
+    animation-duration: 22s;
 }
 
 @keyframes float-complex {
-    0%, 100% { 
-        transform: translateY(0px) translateX(0px) rotate(0deg); 
-        opacity: 0.4;
-    }
-    25% { 
-        transform: translateY(-30px) translateX(20px) rotate(90deg); 
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) scale(1);
         opacity: 0.7;
     }
-    50% { 
-        transform: translateY(-20px) translateX(-15px) rotate(180deg); 
-        opacity: 0.5;
+
+    33% {
+        transform: translateY(-40px) translateX(30px) scale(1.05);
+        opacity: 0.9;
     }
-    75% { 
-        transform: translateY(-40px) translateX(25px) rotate(270deg); 
+
+    66% {
+        transform: translateY(-20px) translateX(-30px) scale(0.95);
         opacity: 0.8;
     }
 }
 
-/* Section animations */
+/* Button Soft Glow */
+.btn-primary {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Premium Icon Container */
+.premium-icon-box {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7), 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s ease;
+}
+
+.premium-card:hover .premium-icon-box {
+    background: linear-gradient(135deg, #eff6ff, #e0e7ff);
+    border-color: rgba(191, 219, 254, 0.8);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9), 0 4px 15px rgba(37, 99, 235, 0.15);
+    transform: scale(1.05) rotate(3deg);
+}
+
+/* SVG Waves Light Tuning */
+.wave-container {
+    height: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.wave-svg {
+    width: 150%;
+    height: 100%;
+    animation: wave-movement 25s ease-in-out infinite;
+}
+
+.wave-parallax use:nth-child(1) {
+    animation: wave-movement 16s ease-in-out infinite reverse;
+}
+
+.wave-parallax use:nth-child(2) {
+    animation: wave-movement 20s ease-in-out infinite;
+}
+
+.wave-parallax use:nth-child(3) {
+    animation: wave-movement 24s ease-in-out infinite reverse;
+}
+
+@keyframes wave-movement {
+
+    0%,
+    100% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(-40px);
+    }
+}
+
+/* Stagger Animations */
 section {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 section.animate-in {
@@ -160,63 +280,24 @@ section.animate-in {
     transform: translateY(0);
 }
 
-/* Card stagger animations */
-.card-hover {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-}
-
-/* Enhanced gradient background */
-.gradient-bg {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-    position: relative;
-}
-
-.gradient-bg::before {
-    content: '';
+/* Interaction Particles Container */
+#particles-js {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(148, 163, 184, 0.06) 0%, transparent 40%);
+    width: 100%;
+    height: 100%;
     z-index: 0;
+    pointer-events: none;
+    /* Let clicks pass through to background if necessary */
+}
+
+/* Scroll config */
+html {
+    scroll-behavior: smooth;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .wave-container {
-        height: 80px;
+        height: 60px;
     }
-    
-    .floating-shape {
-        opacity: 0.3;
-    }
-    
-    .floating-shape:nth-child(2) {
-        display: none;
-    }
-    
-    #particles-js canvas {
-        opacity: 0.5;
-    }
-}
-
-/* Smooth scroll behavior */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Loading animation */
-@keyframes shimmer {
-    0% { background-position: -200px 0; }
-    100% { background-position: calc(200px + 100%) 0; }
-}
-
-.shimmer {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200px 100%;
-    animation: shimmer 1.5s infinite;
 }
