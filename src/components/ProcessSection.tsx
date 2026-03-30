@@ -1,4 +1,5 @@
 import SectionIntro from "./SectionIntro";
+import Icon from "./Icon";
 import { processSteps } from "@/lib/site-content";
 
 export default function ProcessSection() {
@@ -20,7 +21,7 @@ export default function ProcessSection() {
             <article key={step.number} className="premium-card p-5 sm:p-7 lg:p-8">
               <div className="flex items-center gap-4">
                 <div className="premium-icon-box flex h-11 w-11 items-center justify-center text-blue-600 sm:h-12 sm:w-12">
-                  <i aria-hidden="true" className={`fas ${step.icon} text-base sm:text-lg`} />
+                  <Icon name={step.icon} size={20} className="text-blue-600" />
                 </div>
                 <span className="font-display text-3xl font-semibold text-slate-200 sm:text-4xl">
                   {step.number}
@@ -41,9 +42,10 @@ export default function ProcessSection() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm leading-7 font-medium text-slate-700 sm:text-lg sm:leading-8">
               <span className="font-semibold text-blue-700">Agentic Engineering</span>{" "}
-              = vývoj software s AI agenty pod dohledem seniorních vývojářů.
-              AI generuje kód a testy, senioři řídí architekturu, dělají code review
-              a garantují kvalitu. Rychlejší dodávka, konzistentní výstup.
+              = vývoj software s AI agenty pod dohledem seniorních vývojářů a architektů.
+              AI generuje kód a testy, senioři řídí architekturu a dělají code review.
+              Junioři a medioři se podílejí na vývoji i testovacích scénářích — otevíráme
+              obzory celému týmu. Rychlejší dodávka, konzistentní výstup, růst lidí.
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/lib/site-content";
+import { Phone, Menu, X } from "./Icon";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -74,7 +75,7 @@ export default function Navigation() {
                 href="tel:+420777123456"
                 className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
               >
-                <i aria-hidden="true" className="fas fa-phone text-xs text-blue-600" />
+                <Phone size={14} className="text-blue-600" aria-hidden="true" />
                 +420 777 123 456
               </a>
               <Link
@@ -92,10 +93,11 @@ export default function Navigation() {
               onClick={() => setMobileMenuOpen((o) => !o)}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:text-blue-600 lg:hidden"
             >
-              <i
-                aria-hidden="true"
-                className={`fas ${mobileMenuOpen ? "fa-xmark" : "fa-bars"} text-sm`}
-              />
+              {mobileMenuOpen ? (
+                <X size={16} aria-hidden="true" />
+              ) : (
+                <Menu size={16} aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
@@ -131,7 +133,7 @@ export default function Navigation() {
             href="tel:+420777123456"
             className="flex items-center gap-3 text-lg font-medium text-slate-700"
           >
-            <i aria-hidden="true" className="fas fa-phone text-sm text-blue-600" />
+            <Phone size={16} className="text-blue-600" aria-hidden="true" />
             +420 777 123 456
           </a>
           <a

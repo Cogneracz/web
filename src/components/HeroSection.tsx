@@ -1,4 +1,5 @@
 import { heroStats } from "@/lib/site-content";
+import { CalendarCheck, ArrowDown } from "./Icon";
 
 export default function HeroSection() {
   return (
@@ -30,14 +31,14 @@ export default function HeroSection() {
               href="#contact"
               className="btn-primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-semibold text-white sm:w-auto"
             >
-              <i aria-hidden="true" className="fas fa-calendar-check text-sm" />
+              <CalendarCheck size={16} aria-hidden="true" />
               Probrat projekt
             </a>
             <a
               href="#process"
               className="btn-secondary inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 sm:w-auto"
             >
-              <i aria-hidden="true" className="fas fa-arrow-down text-sm" />
+              <ArrowDown size={16} aria-hidden="true" />
               Jak pracujeme
             </a>
           </div>

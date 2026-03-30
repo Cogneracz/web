@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: { unoptimized: true },
   allowedDevOrigins: ["cognera.cz", "www.cognera.cz"],
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   async headers() {
     return [
       {

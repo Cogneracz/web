@@ -1,4 +1,5 @@
 import SectionIntro from "./SectionIntro";
+import Icon from "./Icon";
 import { serviceCards } from "@/lib/site-content";
 
 export default function ServicesSection() {
@@ -21,7 +22,7 @@ export default function ServicesSection() {
             <article key={service.title} className="premium-card p-5 sm:p-7 lg:p-8">
               <div className="flex items-start justify-between gap-4">
                 <div className="premium-icon-box flex h-11 w-11 items-center justify-center text-blue-600 sm:h-12 sm:w-12">
-                  <i aria-hidden="true" className={`fas ${service.icon} text-base sm:text-lg`} />
+                  <Icon name={service.icon} size={20} className="text-blue-600" />
                 </div>
                 <span className="text-sm font-semibold tracking-widest text-slate-300">
                   0{index + 1}

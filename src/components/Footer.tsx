@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { footerTags, navLinks } from "@/lib/site-content";
+import { Mail, Phone } from "./Icon";
 
 export default function Footer() {
   return (
@@ -52,14 +53,14 @@ export default function Footer() {
                 href="mailto:info@cognera.cz"
                 className="flex items-center gap-3 text-base text-slate-600 transition-colors hover:text-blue-600"
               >
-                <i aria-hidden="true" className="fas fa-envelope text-sm text-blue-600" />
+                <Mail size={16} className="text-blue-600" aria-hidden="true" />
                 info@cognera.cz
               </a>
               <a
                 href="tel:+420777123456"
                 className="flex items-center gap-3 text-base text-slate-600 transition-colors hover:text-blue-600"
               >
-                <i aria-hidden="true" className="fas fa-phone text-sm text-blue-600" />
+                <Phone size={16} className="text-blue-600" aria-hidden="true" />
                 +420 777 123 456
               </a>
             </div>
