@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Cognera",
   },
   description:
-    "Agentic Engineering v praxi: AI agenti generují kód, testy a dokumentaci — seniorní vývojáři a architekti řídí architekturu a code review. Vyvíjíme CRM, ERP, inkasní a realitní systémy na Javě, .NET a Node.js. Integrace s ARES, RUIAN, ISDS, ISDOC, Money S3 a Pohoda.",
+    "Agentic Engineering v praxi: AI agenti generují kód, testy a dokumentaci — seniorní vývojáři a architekti řídí architekturu a code review. Vyvíjíme CRM, ERP a informační systémy na Javě, .NET a Node.js. Integrace s ARES, RUIAN, ISDS, ISDOC, Money S3 a Pohoda.",
   keywords: [
     "agentic engineering",
     "vývoj software na zakázku",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title:
       "Cognera | Agentic Engineering — Enterprise software s AI pod seniorním dohledem",
     description:
-      "AI agenti pokrývají rutinní vývoj, seniorní vývojáři a architekti řídí kvalitu. CRM, ERP, informační systémy, AI integrace. Reference: Centera, ISW (pohledávky), CompanyRadar, Cognera CRM.",
+      "AI agenti pokrývají rutinní vývoj, seniorní vývojáři a architekti řídí kvalitu. CRM, ERP, informační systémy, AI integrace. Reference: Centera a Cognera CRM.",
     url: "https://cognera.cz",
     siteName: "Cognera",
     locale: "cs_CZ",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cognera | Agentic Engineering",
     description:
-      "Vyvíjíme enterprise software s AI agenty pod dohledem seniorních vývojářů a architektů.",
+      "Enterprise software: AI agenti píší kód, senioři řídí architekturu a dělají code review.",
     images: ["/og-image.png"],
   },
   category: "technology",
@@ -117,7 +117,7 @@ const organizationJsonLd = {
     addressCountry: "CZ",
   },
   description:
-    "Český softwarový dům zaměřený na Agentic Engineering — vývoj enterprise software s AI agenty pod dohledem seniorních vývojářů a architektů.",
+    "Český softwarový dům zaměřený na Agentic Engineering — vývoj enterprise software, kde AI agenti zrychlují rutinní vývoj a senioři řídí architekturu, kvalitu a bezpečnost.",
   knowsAbout: [
     "Agentic Engineering",
     "AI agenti",

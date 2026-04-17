@@ -1,6 +1,7 @@
 import { heroStats } from "@/lib/site-content";
 import { CalendarCheck, ArrowDown } from "./Icon";
 import ParticleField from "./ParticleField";
+import Waves from "./Waves";
 
 export default function HeroSection() {
   return (
@@ -16,10 +17,9 @@ export default function HeroSection() {
           mouseRadius={160}
           repulseDistance={110}
           speed={1.5}
-          className="pointer-events-auto"
         />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
       </div>
+      <Waves fill="#f8fafc" className="z-[2]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mx-auto max-w-4xl text-center">

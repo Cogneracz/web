@@ -77,7 +77,7 @@ export default function TechSection() {
           <div className="lg:col-span-8">
             <article
               key={active.name}
-              className="premium-card p-6 sm:p-8 lg:p-10"
+              className="premium-card p-5 sm:p-7 lg:p-8"
             >
               <div className="flex items-start gap-4">
                 <div className="premium-icon-box flex h-12 w-12 items-center justify-center">

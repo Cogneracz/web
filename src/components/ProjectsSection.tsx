@@ -19,13 +19,14 @@ export default function ProjectsSection() {
 
         <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-2">
           {projects.map((project) => (
-            <article key={project.name} className="premium-card p-5 sm:p-7 lg:p-10">
+            <article key={project.name} className="premium-card p-5 sm:p-7 lg:p-8">
               {project.logo ? (
                 <Image
                   src={project.logo}
                   alt={project.name}
                   width={40}
                   height={40}
+                  sizes="40px"
                   className="h-10 w-10 rounded-lg object-contain"
                 />
               ) : (

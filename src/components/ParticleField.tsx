@@ -113,6 +113,14 @@ export default function ParticleField({
       mouseRef.current.y = -9999;
     };
 
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current.x = e.touches[0].clientX - rect.left;
+      mouseRef.current.y = e.touches[0].clientY - rect.top;
+      mouseRef.current.active = true;
+    };
+
     const render = () => {
       const { width, height } = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, width, height);
@@ -222,14 +230,20 @@ export default function ParticleField({
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
 
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mouseleave", onMouseLeave);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("blur", onMouseLeave);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onMouseLeave);
+    document.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       resizeObserver.disconnect();
-      canvas.removeEventListener("mousemove", onMouseMove);
-      canvas.removeEventListener("mouseleave", onMouseLeave);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("blur", onMouseLeave);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onMouseLeave);
+      document.removeEventListener("mouseleave", onMouseLeave);
     };
   }, [
     density,
@@ -246,7 +260,7 @@ export default function ParticleField({
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={`pointer-events-auto absolute inset-0 h-full w-full ${className}`}
+      className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
     />
   );
 }

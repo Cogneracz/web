@@ -269,6 +269,23 @@ export default function ContactForm() {
         </div>
       )}
 
+      <div className="rounded-xl border border-slate-200 p-3">
+        <altcha-widget
+          ref={altchaRef}
+          challengeurl="/api/altcha"
+          hidelogo
+          hidefooter
+          strings={JSON.stringify({
+            label: "Nejsem robot",
+            verifying: "Ověřuji…",
+            verified: "Ověřeno",
+            error: "Ověření selhalo",
+            expired: "Ověření vypršelo",
+            footer: "Chráněno pomocí ALTCHA",
+          })}
+        />
+      </div>
+
       <div className="flex items-start gap-3">
         <input
           id="cf-gdpr"
@@ -280,21 +297,13 @@ export default function ContactForm() {
           className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600"
         />
         <label htmlFor="cf-gdpr" className="text-sm text-slate-600">
-          Souhlasím se zpracováním osobních údajů za účelem vyřízení poptávky. *
+          Souhlasím se zpracováním osobních údajů za účelem odpovědi na můj
+          dotaz. *
         </label>
       </div>
       {errors.gdprConsent && (
         <p className="-mt-3 text-xs text-red-500">{errors.gdprConsent}</p>
       )}
-
-      <div className="rounded-xl border border-slate-200 p-3">
-        <altcha-widget
-          ref={altchaRef}
-          challengeurl="/api/altcha"
-          hidelogo
-          hidefooter
-        />
-      </div>
 
       {serverError && (
         <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">

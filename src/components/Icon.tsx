@@ -25,6 +25,16 @@ import {
   Loader2,
   Globe,
   MapPin,
+  Hammer,
+  FileText,
+  Network,
+  Video,
+  Route,
+  BookOpen,
+  Boxes,
+  Anvil,
+  ClipboardCheck,
+  Flame,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -45,6 +55,16 @@ const iconMap: Record<string, LucideIcon> = {
   "fa-plug": Plug,
   "fa-envelope": Mail,
   "fa-phone": Phone,
+  "fa-hammer": Hammer,
+  "fa-file-lines": FileText,
+  "fa-network-wired": Network,
+  "fa-video": Video,
+  "fa-route": Route,
+  "fa-book": BookOpen,
+  "fa-layer-group": Boxes,
+  "fa-anvil": Anvil,
+  "fa-clipboard-check": ClipboardCheck,
+  "fa-flame": Flame,
 };
 
 interface IconProps {

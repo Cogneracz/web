@@ -48,8 +48,8 @@ export default function Footer() {
                 src="/logo-128.png"
                 alt="Cognera"
                 width={40}
-                height={40}
-                className="h-10 w-10 rounded-xl"
+                height={33}
+                className="rounded-xl"
               />
               <span className="font-display text-xl font-semibold tracking-tight text-slate-950">
                 Cognera

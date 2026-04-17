@@ -49,7 +49,7 @@ export default function Navigation() {
                 src="/logo-128.png"
                 alt="Cognera"
                 width={40}
-                height={40}
+                height={33}
                 priority
                 className="rounded-xl"
               />
