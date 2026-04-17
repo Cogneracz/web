@@ -70,6 +70,7 @@ export const contactFormSchema = z.object({
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const SPAM_KEYWORDS = [
+  // English
   "viagra",
   "cialis",
   "casino",
@@ -88,6 +89,30 @@ const SPAM_KEYWORDS = [
   "free money",
   "click here",
   "buy now",
+  "seo services",
+  "guest post",
+  "link building",
+  // Czech
+  "výdělek",
+  "vydelek",
+  "výhra",
+  "výherce",
+  "loterie",
+  "kredit zdarma",
+  "rychlá půjčka",
+  "rychla pujcka",
+  "nebankovní půjčka",
+  "seo služby",
+  "seo sluzby",
+  "levné seo",
+  "nabídka zpětných odkazů",
+  "zpětné odkazy",
+  "zpetne odkazy",
+  "ziskový projekt",
+  "investiční příležitost",
+  "obchodní nabídka zdarma",
+  "pronájem webu",
+  "propagace webu",
 ];
 
 function countUrls(text: string): number {
