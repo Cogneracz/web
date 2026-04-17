@@ -263,8 +263,8 @@ export const contactChannels: ContactChannel[] = [
   {
     icon: "fa-phone",
     label: "Telefon",
-    value: "+420 777 123 456",
-    href: "tel:+420777123456",
+    value: "+420 607 204 423",
+    href: "tel:+420607204423",
   },
 ];
 

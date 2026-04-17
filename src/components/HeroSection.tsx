@@ -1,5 +1,6 @@
 import { heroStats } from "@/lib/site-content";
 import { CalendarCheck, ArrowDown } from "./Icon";
+import ParticleField from "./ParticleField";
 
 export default function HeroSection() {
   return (
@@ -7,7 +8,20 @@ export default function HeroSection() {
       id="home"
       className="relative overflow-hidden bg-white px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 lg:px-8 lg:pb-28 lg:pt-40"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 via-white to-white" />
+        <ParticleField
+          density={0.00009}
+          linkDistance={150}
+          mouseRadius={160}
+          repulseDistance={110}
+          speed={1.5}
+          className="pointer-events-auto"
+        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mx-auto max-w-4xl text-center">
           <p className="hero-fade-in section-kicker mb-4 sm:mb-6">
             Agentic Engineering Studio

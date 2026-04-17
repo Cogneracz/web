@@ -72,11 +72,11 @@ export default function Navigation() {
 
             <div className="hidden items-center gap-3 lg:flex">
               <a
-                href="tel:+420777123456"
+                href="tel:+420607204423"
                 className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
               >
                 <Phone size={14} className="text-blue-600" aria-hidden="true" />
-                +420 777 123 456
+                +420 607 204 423
               </a>
               <Link
                 href="#contact"
@@ -130,11 +130,11 @@ export default function Navigation() {
 
         <div className="mt-8 space-y-3">
           <a
-            href="tel:+420777123456"
+            href="tel:+420607204423"
             className="flex items-center gap-3 text-lg font-medium text-slate-700"
           >
             <Phone size={16} className="text-blue-600" aria-hidden="true" />
-            +420 777 123 456
+            +420 607 204 423
           </a>
           <a
             href="#contact"

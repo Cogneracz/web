@@ -208,7 +208,7 @@ export default function ContactForm() {
             value={form.phone}
             onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
             className={`form-input ${errors.phone ? "form-input-error" : ""}`}
-            placeholder="+420 777 123 456"
+            placeholder="+420 607 204 423"
           />
           {errors.phone && (
             <p className="mt-1 text-xs text-red-500">{errors.phone}</p>

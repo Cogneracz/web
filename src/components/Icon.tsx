@@ -19,9 +19,12 @@ import {
   Send,
   CalendarCheck,
   ArrowDown,
+  ArrowRight,
   Menu,
   X,
   Loader2,
+  Globe,
+  MapPin,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -61,11 +64,14 @@ export {
   Send,
   CalendarCheck,
   ArrowDown,
+  ArrowRight,
   Menu,
   X,
   Loader2,
   Mail,
   Phone,
+  Globe,
+  MapPin,
 };
 
 export function LinkedinIcon({
