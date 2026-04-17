@@ -37,16 +37,6 @@ export default function ProjectsSection() {
               <p className="mt-3 text-sm leading-7 text-slate-600 sm:mt-4 sm:text-base">
                 {project.description}
               </p>
-              <div className="mt-4 flex flex-wrap gap-2 sm:mt-6">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-500 sm:text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </article>
           ))}
         </div>

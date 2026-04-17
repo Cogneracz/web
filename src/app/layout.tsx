@@ -16,13 +16,40 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cognera.cz"),
-  title: "Cognera | Agentic Engineering — Vývoj software s AI a seniorním dohledem",
+  title: {
+    default:
+      "Cognera | Agentic Engineering — Vývoj enterprise software s AI a seniorním dohledem",
+    template: "%s | Cognera",
+  },
   description:
-    "Vyvíjíme enterprise software s AI agenty pod dohledem seniorních vývojářů. CRM, ERP, informační systémy a AI integrace.",
-  keywords:
-    "agentic engineering, vývoj software, ai agenti, senior vývojáři, crm, erp, informační systém, ai integrace",
+    "Agentic Engineering v praxi: AI agenti generují kód, testy a dokumentaci — seniorní vývojáři a architekti řídí architekturu a code review. Vyvíjíme CRM, ERP, inkasní a realitní systémy na Javě, .NET a Node.js. Integrace s ARES, RUIAN, ISDS, ISDOC, Money S3 a Pohoda.",
+  keywords: [
+    "agentic engineering",
+    "vývoj software na zakázku",
+    "AI vývoj",
+    "AI agenti",
+    "enterprise software",
+    "informační systém",
+    "CRM na míru",
+    "ERP na míru",
+    "vývoj CRM ERP Česko",
+    "integrace ARES RUIAN ISDS ISDOC",
+    "Money S3 Pohoda integrace",
+    "Spring Boot vývoj",
+    ".NET vývoj",
+    "React Next.js vývojáři",
+    "code review seniorní vývojář",
+    "Claude Code agenti",
+    "AI fakturace",
+    "AI automatizace business procesů",
+    "Cognera",
+  ],
+  authors: [{ name: "Cognera" }],
+  creator: "Cognera",
+  publisher: "Cognera",
   alternates: {
     canonical: "/",
+    languages: { "cs-CZ": "/" },
   },
   icons: {
     icon: "/logo-128.png",
@@ -31,22 +58,98 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
-    title: "Cognera | Agentic Engineering — Vývoj software s AI a seniorním dohledem",
+    title:
+      "Cognera | Agentic Engineering — Enterprise software s AI pod seniorním dohledem",
     description:
-      "Stavíme enterprise systémy novou cestou. AI agenti pokrývají rutinní vývoj, seniorní vývojáři řídí architekturu a kvalitu.",
+      "AI agenti pokrývají rutinní vývoj, seniorní vývojáři a architekti řídí kvalitu. CRM, ERP, informační systémy, AI integrace. Reference: Centera, ISW (pohledávky), CompanyRadar, Cognera CRM.",
     url: "https://cognera.cz",
     siteName: "Cognera",
     locale: "cs_CZ",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Cognera — Agentic Engineering",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cognera | Agentic Engineering",
     description:
-      "Vyvíjíme enterprise software s AI agenty pod dohledem seniorních vývojářů.",
+      "Vyvíjíme enterprise software s AI agenty pod dohledem seniorních vývojářů a architektů.",
+    images: ["/og-image.png"],
   },
+  category: "technology",
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Cognera",
+  legalName: "Cognera s.r.o.",
+  alternateName: "Cognera s.r.o.",
+  url: "https://cognera.cz",
+  logo: "https://cognera.cz/logo-128.png",
+  email: "info@cognera.cz",
+  taxID: "CZ23743514",
+  vatID: "CZ23743514",
+  identifier: [
+    { "@type": "PropertyValue", propertyID: "IČO", value: "23743514" },
+    { "@type": "PropertyValue", propertyID: "DIČ", value: "CZ23743514" },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Panská 571",
+    addressLocality: "Chýnov",
+    postalCode: "391 55",
+    addressCountry: "CZ",
+  },
+  description:
+    "Český softwarový dům zaměřený na Agentic Engineering — vývoj enterprise software s AI agenty pod dohledem seniorních vývojářů a architektů.",
+  knowsAbout: [
+    "Agentic Engineering",
+    "AI agenti",
+    "Spring Boot",
+    "ASP.NET Core",
+    "React",
+    "Next.js",
+    "PostgreSQL",
+    "Oracle",
+    "CRM",
+    "ERP",
+    "Informační systémy",
+    "ARES",
+    "RUIAN",
+    "ISDS",
+    "ISDOC",
+  ],
+  areaServed: { "@type": "Country", name: "Czech Republic" },
+  sameAs: [
+    "https://www.linkedin.com/company/cognera-s-r-o/",
+    "https://github.com/Cogneracz",
+    "https://rejstrik-firem.kurzy.cz/23743514/cognera-sro/",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Cognera",
+  url: "https://cognera.cz",
+  inLanguage: "cs-CZ",
+  publisher: { "@type": "Organization", name: "Cognera" },
 };
 
 export const viewport: Viewport = {
@@ -68,6 +171,14 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Přeskočit na obsah
         </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         {children}
       </body>
     </html>

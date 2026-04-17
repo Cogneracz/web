@@ -44,7 +44,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-fade-in-more-delayed mx-auto mt-10 grid max-w-3xl grid-cols-3 gap-4 border-t border-slate-200 pt-8 sm:mt-16 sm:gap-8 sm:pt-10">
+        <div className="hero-fade-in-more-delayed mx-auto mt-10 grid max-w-xl grid-cols-2 gap-4 border-t border-slate-200 pt-8 sm:mt-16 sm:gap-8 sm:pt-10">
           {heroStats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-display text-2xl font-semibold tabular-nums text-slate-950 sm:text-3xl lg:text-4xl">

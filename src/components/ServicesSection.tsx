@@ -35,10 +35,6 @@ export default function ServicesSection() {
               <p className="mt-2 text-sm leading-7 text-slate-600 sm:mt-3 sm:text-base">
                 {service.description}
               </p>
-
-              <p className="mt-4 text-sm font-medium text-slate-400 sm:mt-6">
-                {service.tags.join(" / ")}
-              </p>
             </article>
           ))}
         </div>

@@ -35,6 +35,7 @@ export interface ContactChannel {
 export interface TechCategory {
   name: string;
   icon: string;
+  description?: string;
   items: { name: string; version?: string }[];
 }
 
@@ -48,7 +49,6 @@ export const navLinks: NavLink[] = [
 
 export const heroStats = [
   { value: "3×", label: "Rychlejší dodávka" },
-  { value: "15+", label: "Let zkušeností" },
   { value: "100%", label: "Senior dohled" },
 ];
 
@@ -112,54 +112,59 @@ export const projects: ProjectRef[] = [
     name: "Centera",
     subtitle: "Systém pro vlastníky a správce komerčních nemovitostí",
     description:
-      "Informační systém pro správu obchodních center a komerčních budov. Správa nájemců, nájemních smluv, fakturace, provozní agendy a reportingu — pro každého, kdo pronajímá a spravuje nemovitosti.",
-    tags: ["React", "Spring Boot", "PostgreSQL", "MUI"],
+      "Komplexní informační systém pro správu obchodních center a komerčních budov. Správa subjektů, nájemních smluv s workflow, hromadná fakturace, automatické párování plateb, šablony dokumentů a RBAC oprávnění. Nasazený u českých provozovatelů nákupních center.",
+    tags: ["React 18", "Spring Boot", "PostgreSQL", "Material-UI", "TanStack Query"],
     logo: "/centera-logo.png",
   },
   {
-    name: "OSA Apollon",
-    subtitle: "Informační systém pro správu pojistných kmenů",
-    description:
-      "Modulární systém pro pojišťovací agentury — správa pojistných smluv, klientů, provizí a účetnictví. Integrace s ARES a dalšími registry, drag-and-drop workflow a fulltext vyhledávání.",
-    tags: ["React", "ASP.NET Core", "Oracle", "Tailwind CSS"],
-  },
-  {
     name: "ISW",
-    subtitle: "Systém pro správu pohledávek a inkasní procesy",
+    subtitle: "Systém pro správu a vymáhání pohledávek",
     description:
-      "Informační systém pro advokátní kancelář — správa pohledávek, dlužníků, splátkových kalendářů a právních úkonů. Automatizované workflow, generování dokumentů a reporting.",
-    tags: ["React", "Spring Boot 4", "PostgreSQL", "Ant Design"],
+      "Inkasní systém pro advokátní kancelář AK MAŠEK (I-Xon, a.s.). Správa pohledávek, dlužníků, splátkových kalendářů a právních úkonů. Modulární architektura (Spring Modulith), OpenAPI contract-first, automatizované workflow a generování dokumentů.",
+    tags: ["React 19", "Java 25", "Spring Boot 4", "PostgreSQL 18", "Ant Design", "Tailwind 4"],
   },
   {
-    name: "Forge",
-    subtitle: "AI platforma pro automatizaci vývoje software",
+    name: "CompanyRadar",
+    subtitle: "Monitoring českých firem z jednoho místa",
     description:
-      "Interní nástroj pro automatizaci vývojového procesu. Z issue na GitHub automaticky vznikne pull request — AI agenti generují kód, testy i dokumentaci pod dohledem seniorních vývojářů.",
-    tags: ["Claude Agent SDK", "Fastify", "React", "Turborepo"],
+      "B2B platforma pro sledování firemních dat z justice.cz, Merk.cz a ARES. Automatická detekce změn v obchodním rejstříku, ověřování IČO, denní aktualizace a finanční data. SSO přes Microsoft, role-based přístup (admin/user/viewer) — pro compliance, obchod a risk management.",
+    tags: ["React", "TypeScript", "Microsoft SSO", "ARES", "justice.cz", "Merk.cz"],
+  },
+  {
+    name: "InvoiceAI",
+    subtitle: "AI-řízená automatizace zpracování faktur",
+    description:
+      "Platforma pro automatické zpracování přijatých faktur — AI rozpozná položky, spáruje s objednávkami a smlouvami, validuje IČO přes ARES a exportuje do účetního systému ve formátu ISDOC. Integrace s Money S3 a Pohoda, schvalovací workflow a auditní stopa.",
+    tags: ["AI / LLM", "ISDOC", "ARES", "Money S3", "Pohoda", "OCR"],
   },
 ];
 
 export const techCategories: TechCategory[] = [
   {
-    name: "Programovací jazyky",
-    icon: "fa-code",
+    name: "AI & Agenti",
+    icon: "fa-robot",
+    description:
+      "Autonomní agenti, kteří generují kód, testy i dokumentaci pod dohledem seniorních vývojářů a architektů. Propojujeme AI s existujícími systémy přes MCP a OpenAPI — od asistovaného vývoje po produkční AI vrstvy nad firemními daty.",
     items: [
-      { name: "TypeScript", version: "5" },
-      { name: "Java", version: "21" },
-      { name: "C#", version: ".NET 8" },
-      { name: "Python" },
-      { name: "SQL" },
+      { name: "Claude Code" },
+      { name: "Claude Agent SDK" },
+      { name: "Codex" },
+      { name: "Cursor" },
+      { name: "MCP Servery" },
+      { name: "OpenAPI" },
     ],
   },
   {
     name: "Frontend",
     icon: "fa-display",
+    description:
+      "Moderní React stack s TypeScriptem a Tailwindem. Enterprise UI kity (MUI, Ant Design) pro firemní aplikace. Důraz na přístupnost, výkon a dlouhodobou udržitelnost.",
     items: [
       { name: "React", version: "19" },
-      { name: "Vite", version: "8" },
       { name: "Next.js", version: "16" },
+      { name: "Vite", version: "8" },
       { name: "Tailwind CSS", version: "4" },
-      { name: "MUI", version: "7" },
+      { name: "Material-UI", version: "7" },
       { name: "Ant Design", version: "6" },
       { name: "TanStack" },
     ],
@@ -167,52 +172,83 @@ export const techCategories: TechCategory[] = [
   {
     name: "Backend",
     icon: "fa-server",
+    description:
+      "Robustní backend na ověřených LTS frameworcích. Spring Boot a ASP.NET Core pro enterprise, Node.js pro služby s nižší latencí. Contract-first přístup přes OpenAPI.",
     items: [
       { name: "Spring Boot", version: "4" },
       { name: "ASP.NET Core", version: "8" },
-      { name: "Fastify", version: "5" },
       { name: "Node.js", version: "22" },
+      { name: "Spring Modulith" },
+    ],
+  },
+  {
+    name: "Jazyky",
+    icon: "fa-code",
+    description:
+      "Typově bezpečné jazyky pro udržitelný kód. Volíme podle domény a týmu klienta, ne podle módy — Java a C# pro enterprise, TypeScript napříč stackem, Python pro AI/data.",
+    items: [
+      { name: "TypeScript", version: "5" },
+      { name: "Java", version: "25 LTS" },
+      { name: "C#", version: ".NET 8" },
+      { name: "Python" },
+      { name: "SQL" },
     ],
   },
   {
     name: "Databáze",
     icon: "fa-database",
+    description:
+      "Relační databáze pro konzistentní data, Redis pro cache a rychlá fronty. Migrace řízené Flywayem s auditní stopou každé změny schématu.",
     items: [
       { name: "PostgreSQL", version: "18" },
       { name: "Oracle" },
+      { name: "Microsoft SQL Server" },
       { name: "SQLite" },
+      { name: "Redis" },
       { name: "Flyway" },
-    ],
-  },
-  {
-    name: "Testování",
-    icon: "fa-vial",
-    items: [
-      { name: "Vitest", version: "4" },
-      { name: "TestCafe" },
-      { name: "Testcontainers" },
-      { name: "Playwright" },
     ],
   },
   {
     name: "DevOps & CI/CD",
     icon: "fa-gears",
+    description:
+      "Automatizované pipeline, kontejnerizované nasazení a reprodukovatelná prostředí. Od commitu do produkce bez manuálních kroků — včetně orchestrace microservices přes .NET Aspire.",
     items: [
       { name: "Docker" },
       { name: "GitHub Actions" },
       { name: "Azure DevOps" },
+      { name: ".NET Aspire" },
       { name: "Nginx" },
       { name: "Turborepo" },
     ],
   },
   {
-    name: "AI & Agenti",
-    icon: "fa-robot",
+    name: "Testování",
+    icon: "fa-vial",
+    description:
+      "Vícevrstvá testovací pyramida — od rychlých unit testů po end-to-end scénáře s reálnými databázemi v kontejnerech. Junioři a medioři se podílejí na návrhu testovacích scénářů.",
     items: [
-      { name: "Claude Code" },
-      { name: "Claude Agent SDK" },
-      { name: "MCP Servery" },
-      { name: "OpenAPI" },
+      { name: "Vitest", version: "4" },
+      { name: "Jest" },
+      { name: "JUnit" },
+      { name: "xUnit" },
+      { name: "pytest" },
+      { name: "Playwright" },
+      { name: "Testcontainers" },
+    ],
+  },
+  {
+    name: "Integrace",
+    icon: "fa-plug",
+    description:
+      "České i mezinárodní systémy, účetní software a státní registry. Integrujeme s klíčovými zdroji dat, které firmy v ČR reálně používají — bez kterých systém nemá smysl.",
+    items: [
+      { name: "ARES" },
+      { name: "RUIAN" },
+      { name: "ISDS" },
+      { name: "ISDOC" },
+      { name: "Money S3" },
+      { name: "Pohoda" },
     ],
   },
 ];
