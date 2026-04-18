@@ -164,6 +164,7 @@ export default function ContactForm() {
           <input
             id="cf-name"
             type="text"
+            autoComplete="name"
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
             className={`form-input ${errors.name ? "form-input-error" : ""}`}
@@ -183,6 +184,8 @@ export default function ContactForm() {
           <input
             id="cf-email"
             type="email"
+            autoComplete="email"
+            inputMode="email"
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             className={`form-input ${errors.email ? "form-input-error" : ""}`}
@@ -205,6 +208,8 @@ export default function ContactForm() {
           <input
             id="cf-phone"
             type="tel"
+            autoComplete="tel"
+            inputMode="tel"
             value={form.phone}
             onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
             className={`form-input ${errors.phone ? "form-input-error" : ""}`}
@@ -224,6 +229,7 @@ export default function ContactForm() {
           <input
             id="cf-company"
             type="text"
+            autoComplete="organization"
             value={form.company}
             onChange={(e) =>
               setForm((f) => ({ ...f, company: e.target.value }))

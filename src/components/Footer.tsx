@@ -65,14 +65,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Cognera"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all hover:border-blue-400 hover:bg-transparent hover:text-blue-600"
+                className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all hover:border-blue-400 hover:bg-transparent hover:text-blue-600"
               >
                 <LinkedinIcon size={16} />
               </a>
               <a
                 href="mailto:info@cognera.cz"
                 aria-label="Email"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all hover:border-blue-400 hover:bg-transparent hover:text-blue-600"
+                className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all hover:border-blue-400 hover:bg-transparent hover:text-blue-600"
               >
                 <Mail size={16} aria-hidden="true" />
               </a>

@@ -91,7 +91,7 @@ export default function Navigation() {
               aria-label={mobileMenuOpen ? "Zavřít menu" : "Otevřít menu"}
               aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen((o) => !o)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:text-blue-600 lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:text-blue-600 lg:hidden"
             >
               {mobileMenuOpen ? (
                 <X size={16} aria-hidden="true" />
@@ -111,8 +111,9 @@ export default function Navigation() {
       />
 
       <aside
-        className={`fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-slate-200 bg-white px-6 pb-8 pt-24 transition-transform duration-300 lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        aria-hidden={!mobileMenuOpen}
+        className={`fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto overscroll-contain border-l border-slate-200 bg-white px-6 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-24 transition-transform duration-300 lg:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}
       >
         <div className="space-y-2">
