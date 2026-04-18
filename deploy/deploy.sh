@@ -64,7 +64,9 @@ echo -e "${GREEN}Build successful${NC}"
 # Step 2: Package
 echo -e "${YELLOW}Step 2: Packaging...${NC}"
 cd "$APP_DIR"
-tar czf /tmp/cognera-web-deploy.tar.gz .
+# --no-xattrs: strip macOS extended attributes (com.apple.provenance etc.)
+# so GNU tar on the Linux server doesn't warn per file during extraction.
+COPYFILE_DISABLE=1 tar --no-xattrs -czf /tmp/cognera-web-deploy.tar.gz .
 cd "$REPO_ROOT"
 DEPLOY_SIZE=$(du -sh /tmp/cognera-web-deploy.tar.gz | cut -f1)
 echo -e "${GREEN}Package ready: $DEPLOY_SIZE${NC}"
