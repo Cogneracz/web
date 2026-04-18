@@ -1,0 +1,20 @@
+[Unit]
+Description=Cognera Web (Next.js standalone)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/cognera-web
+ExecStart=/usr/bin/node /var/www/cognera-web/server.js
+Restart=on-failure
+RestartSec=10
+EnvironmentFile=/var/www/cognera-web/.env
+Environment=NODE_ENV=production
+Environment=PORT=3003
+Environment=HOSTNAME=127.0.0.1
+StandardOutput=append:/var/log/cognera-web/access.log
+StandardError=append:/var/log/cognera-web/error.log
+
+[Install]
+WantedBy=multi-user.target
