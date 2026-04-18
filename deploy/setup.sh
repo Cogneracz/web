@@ -53,7 +53,7 @@ NODE_ENV=production
 PORT=3003
 HOSTNAME=127.0.0.1
 
-SMTP_HOST=smtp.cognera.cz
+SMTP_HOST=smtp.profiwh.com
 SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=info@cognera.cz
