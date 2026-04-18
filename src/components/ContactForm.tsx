@@ -1,7 +1,48 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Check, Send, Loader2 } from "./Icon";
+
+type CountryKey = "cz" | "sk";
+
+function CzFlag({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 6 4"
+      aria-hidden="true"
+      className={className}
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <rect width="6" height="2" fill="#ffffff" />
+      <rect y="2" width="6" height="2" fill="#d7141a" />
+      <polygon points="0,0 3,2 0,4" fill="#11457e" />
+    </svg>
+  );
+}
+
+function SkFlag({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 6 4"
+      aria-hidden="true"
+      className={className}
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <rect width="6" height="1.333" fill="#ffffff" />
+      <rect y="1.333" width="6" height="1.334" fill="#0b4ea2" />
+      <rect y="2.667" width="6" height="1.333" fill="#ee1620" />
+    </svg>
+  );
+}
+
+const COUNTRIES: Record<
+  CountryKey,
+  { code: string; label: string; Flag: (p: { className?: string }) => React.ReactElement }
+> = {
+  cz: { code: "+420", label: "Česká republika", Flag: CzFlag },
+  sk: { code: "+421", label: "Slovensko", Flag: SkFlag },
+};
 
 interface FormState {
   name: string;
@@ -35,7 +76,29 @@ export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [country, setCountry] = useState<CountryKey>("cz");
+  const [countryOpen, setCountryOpen] = useState(false);
+  const countryBoxRef = useRef<HTMLDivElement>(null);
   const altchaRef = useRef<HTMLElement>(null);
+
+  // Close country dropdown on outside click / Escape
+  useEffect(() => {
+    if (!countryOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!countryBoxRef.current?.contains(e.target as Node)) {
+        setCountryOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setCountryOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [countryOpen]);
 
   // Load ALTCHA widget
   useEffect(() => {
@@ -77,11 +140,8 @@ export default function ContactForm() {
       errs.name = "Jméno musí mít alespoň 2 znaky";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       errs.email = "Zadejte platnou emailovou adresu";
-    if (
-      form.phone &&
-      !/^\+?(420|421)\s?\d{3}\s?\d{3}\s?\d{3}$/.test(form.phone)
-    )
-      errs.phone = "Zadejte platné číslo (+420/+421)";
+    if (form.phone && !/^\d{3}\s?\d{3}\s?\d{3}$/.test(form.phone.trim()))
+      errs.phone = "Zadejte 9 číslic bez předvolby";
     if (form.message.trim().length < 10)
       errs.message = "Zpráva musí mít alespoň 10 znaků";
     if (!form.gdprConsent) errs.gdprConsent = "Souhlas je povinný";
@@ -105,8 +165,12 @@ export default function ContactForm() {
 
     setSubmitting(true);
     try {
+      const phoneCombined = form.phone.trim()
+        ? `${COUNTRIES[country].code} ${form.phone.trim()}`
+        : "";
       const payload: Record<string, unknown> = {
         ...form,
+        phone: phoneCombined,
         csrfToken: tokens.csrfToken,
         jsToken: tokens.jsToken,
         honeypotName: tokens.honeypotName,
@@ -198,23 +262,87 @@ export default function ContactForm() {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
+        <div ref={countryBoxRef} className="relative">
           <label
             htmlFor="cf-phone"
             className="mb-1.5 block text-sm font-medium text-slate-700"
           >
             Telefon
           </label>
-          <input
-            id="cf-phone"
-            type="tel"
-            autoComplete="tel"
-            inputMode="tel"
-            value={form.phone}
-            onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-            className={`form-input ${errors.phone ? "form-input-error" : ""}`}
-            placeholder="+420 607 204 423"
-          />
+          <div
+            className={`flex items-stretch rounded-xl border bg-white transition-colors focus-within:border-blue-600 ${
+              errors.phone ? "border-red-400" : "border-slate-200"
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setCountryOpen((o) => !o)}
+              aria-haspopup="listbox"
+              aria-expanded={countryOpen}
+              aria-label={`Předvolba ${COUNTRIES[country].code}, ${COUNTRIES[country].label}`}
+              className="flex items-center gap-2 rounded-l-xl border-r border-slate-200 px-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
+            >
+              {(() => {
+                const Flag = COUNTRIES[country].Flag;
+                return (
+                  <Flag className="h-3.5 w-5 overflow-hidden rounded-sm ring-1 ring-slate-200" />
+                );
+              })()}
+              <span className="tabular-nums">{COUNTRIES[country].code}</span>
+              <ChevronDown
+                size={14}
+                aria-hidden="true"
+                className={`text-slate-400 transition-transform duration-200 ${
+                  countryOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <input
+              id="cf-phone"
+              type="tel"
+              autoComplete="tel-national"
+              inputMode="tel"
+              value={form.phone}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, phone: e.target.value }))
+              }
+              placeholder="607 204 423"
+              style={{ fontSize: "max(16px, 1rem)" }}
+              className="min-w-0 flex-1 rounded-r-xl bg-transparent px-4 py-3 text-slate-900 outline-none placeholder:text-slate-400"
+            />
+          </div>
+          {countryOpen && (
+            <ul
+              role="listbox"
+              aria-label="Zvolte zemi"
+              className="absolute left-0 top-full z-20 mt-2 w-[min(18rem,100%)] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg"
+            >
+              {(Object.keys(COUNTRIES) as CountryKey[]).map((key) => {
+                const { code, label, Flag } = COUNTRIES[key];
+                const isSelected = country === key;
+                return (
+                  <li key={key}>
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={isSelected}
+                      onClick={() => {
+                        setCountry(key);
+                        setCountryOpen(false);
+                      }}
+                      className={`flex w-full items-center gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-slate-50 ${
+                        isSelected ? "bg-blue-50/60 text-slate-950" : "text-slate-700"
+                      }`}
+                    >
+                      <Flag className="h-4 w-6 flex-shrink-0 overflow-hidden rounded-sm ring-1 ring-slate-200" />
+                      <span className="flex-1 font-medium">{label}</span>
+                      <span className="tabular-nums text-slate-500">{code}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           {errors.phone && (
             <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
           )}
