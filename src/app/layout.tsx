@@ -52,8 +52,13 @@ export const metadata: Metadata = {
     languages: { "cs-CZ": "/" },
   },
   icons: {
-    icon: "/logo-128.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
   robots: {
     index: true,
