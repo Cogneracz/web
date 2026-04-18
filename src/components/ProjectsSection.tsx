@@ -14,7 +14,7 @@ export default function ProjectsSection() {
               <span className="text-blue-600">potvrzují přístup</span>.
             </>
           }
-          description="Agentic engineering není teorie. Tady jsou systémy, které jsme tímto způsobem navrhli a dodali do provozu."
+          description="Agentic engineering není teorie. Tady jsou systémy, které jsme tímto způsobem navrhli a dodali do provozu — jen zlomek toho, co reálně běží v produkci našich klientů."
         />
 
         <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-2">
@@ -42,6 +42,20 @@ export default function ProjectsSection() {
             </article>
           ))}
         </div>
+
+        <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-7 text-slate-500 sm:mt-14 sm:text-base">
+          Většina našich projektů podléhá NDA a nemůžeme je veřejně jmenovat —
+          enterprise systémy, interní platformy i AI nasazení u zákazníků, o kterých
+          se nemluví. Pokud zvažujete spolupráci a chcete slyšet konkrétní reference
+          z vaší domény,{" "}
+          <a
+            href="#contact"
+            className="font-medium text-blue-600 underline decoration-blue-200 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-400"
+          >
+            ozvěte se
+          </a>{" "}
+          — rádi si o tom popovídáme osobně.
+        </p>
       </div>
     </section>
   );
