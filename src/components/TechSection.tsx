@@ -15,13 +15,20 @@ export default function TechSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const railRef = useRef<HTMLUListElement>(null);
+  const isFirstRender = useRef(true);
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     const rail = railRef.current;
     if (!rail) return;
     const btn = rail.querySelector<HTMLElement>(
       `[data-tech-index="${activeIndex}"]`
     );
-    if (!btn) return;
+    // offsetParent is null when the element (or an ancestor) is display:none —
+    // skip scrolling when the desktop rail is hidden on mobile.
+    if (!btn || btn.offsetParent === null) return;
     btn.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
