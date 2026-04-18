@@ -130,6 +130,7 @@ export const projects: ProjectRef[] = [
     subtitle: "Provozní páteř Cognery a živý důkaz agentního vývoje",
     description:
       "Jednotné prostředí, kde se řídí celá Cognera — výkazy práce s automatickým návrhem z commitů i záznamů ze schůzek, projekty napojené na repozitáře, rozpočty, hodinové sazby a schvalovací workflow faktur, zrcadlení issues, portál pro zákazníky a AI chat nad firemní dokumentací s RAG vyhledáváním. Postavené vlastními agenty na vlastních nástrojích — naše CRM je zároveň referenční implementace agentního vývoje v praxi.",
+    logo: "/logo-256.png",
     tags: [
       "React 19",
       "NestJS 11",
@@ -154,8 +155,8 @@ export const internalTools: InternalTool[] = [
     name: "Forge",
     tagline: "Autonomní vývojová platforma",
     description:
-      "Naše vlajková AI platforma pro autonomní softwarový vývoj. Paralelně orchestruje nejsilnější modely (Claude, GPT, Gemini) přes několik CLI nástrojů najednou a dynamicky volí optimální kombinaci podle typu zadání. Workflow obsahuje rozhodovací body — každá fáze validuje svůj výstup a může proces přesměrovat nebo přidat revizi. Spec-first, izolovaná prostředí pro každý úkol, multi-modální vstupy i výstupy.",
-    metric: "Multi-model · Multi-CLI",
+      "Naše vlajková AI platforma pro autonomní softwarový vývoj. Paralelně orchestruje nejsilnější modely (Claude, GPT, Gemini) přes několik harnessů najednou a dynamicky volí optimální kombinaci podle typu zadání. Workflow obsahuje rozhodovací body — každá fáze validuje svůj výstup a může proces přesměrovat nebo přidat revizi. Spec-first, izolovaná prostředí pro každý úkol, multi-modální vstupy i výstupy.",
+    metric: "Multi-model · Multi-harness",
     icon: "fa-hammer",
   },
   {

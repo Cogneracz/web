@@ -6,42 +6,25 @@ import { Check, Send, Loader2 } from "./Icon";
 
 type CountryKey = "cz" | "sk";
 
-function CzFlag({ className }: { className?: string }) {
+function Flag({ emoji, className }: { emoji: string; className?: string }) {
   return (
-    <svg
-      viewBox="0 0 6 4"
+    <span
       aria-hidden="true"
       className={className}
-      preserveAspectRatio="xMidYMid slice"
+      style={{
+        fontFamily:
+          '"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Twemoji Mozilla",sans-serif',
+        lineHeight: 1,
+      }}
     >
-      <rect width="6" height="2" fill="#ffffff" />
-      <rect y="2" width="6" height="2" fill="#d7141a" />
-      <polygon points="0,0 3,2 0,4" fill="#11457e" />
-    </svg>
+      {emoji}
+    </span>
   );
 }
 
-function SkFlag({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 6 4"
-      aria-hidden="true"
-      className={className}
-      preserveAspectRatio="xMidYMid slice"
-    >
-      <rect width="6" height="1.333" fill="#ffffff" />
-      <rect y="1.333" width="6" height="1.334" fill="#0b4ea2" />
-      <rect y="2.667" width="6" height="1.333" fill="#ee1620" />
-    </svg>
-  );
-}
-
-const COUNTRIES: Record<
-  CountryKey,
-  { code: string; label: string; Flag: (p: { className?: string }) => React.ReactElement }
-> = {
-  cz: { code: "+420", label: "Česká republika", Flag: CzFlag },
-  sk: { code: "+421", label: "Slovensko", Flag: SkFlag },
+const COUNTRIES: Record<CountryKey, { code: string; label: string; emoji: string }> = {
+  cz: { code: "+420", label: "Česká republika", emoji: "🇨🇿" },
+  sk: { code: "+421", label: "Slovensko", emoji: "🇸🇰" },
 };
 
 interface FormState {
@@ -282,12 +265,11 @@ export default function ContactForm() {
               aria-label={`Předvolba ${COUNTRIES[country].code}, ${COUNTRIES[country].label}`}
               className="flex items-center gap-2 rounded-l-xl border-r border-slate-200 px-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
             >
-              {(() => {
-                const Flag = COUNTRIES[country].Flag;
-                return (
-                  <Flag className="h-3.5 w-5 overflow-hidden rounded-sm ring-1 ring-slate-200" />
-                );
-              })()}
+              <Flag
+                emoji={COUNTRIES[country].emoji}
+                className="text-base leading-none"
+              />
+
               <span className="tabular-nums">{COUNTRIES[country].code}</span>
               <ChevronDown
                 size={14}
@@ -318,7 +300,7 @@ export default function ContactForm() {
               className="absolute left-0 top-full z-20 mt-2 w-[min(18rem,100%)] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg"
             >
               {(Object.keys(COUNTRIES) as CountryKey[]).map((key) => {
-                const { code, label, Flag } = COUNTRIES[key];
+                const { code, label, emoji } = COUNTRIES[key];
                 const isSelected = country === key;
                 return (
                   <li key={key}>
@@ -334,7 +316,7 @@ export default function ContactForm() {
                         isSelected ? "bg-blue-50/60 text-slate-950" : "text-slate-700"
                       }`}
                     >
-                      <Flag className="h-4 w-6 flex-shrink-0 overflow-hidden rounded-sm ring-1 ring-slate-200" />
+                      <Flag emoji={emoji} className="text-lg leading-none" />
                       <span className="flex-1 font-medium">{label}</span>
                       <span className="tabular-nums text-slate-500">{code}</span>
                     </button>
