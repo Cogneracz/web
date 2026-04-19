@@ -3,6 +3,8 @@ import ContactForm from "./ContactForm";
 import Icon from "./Icon";
 import { Check } from "./Icon";
 import { contactChannels } from "@/lib/site-content";
+import { CONTACT_FORM_TARGET_ID } from "@/lib/contact-target";
+import ProtectedEmailButton, { ProtectedEmailText } from "./ProtectedEmailButton";
 
 export default function ContactSection() {
   return (
@@ -22,25 +24,44 @@ export default function ContactSection() {
         <div className="mt-10 grid gap-8 sm:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-12">
           <div>
             <div className="space-y-3">
-              {contactChannels.map((channel) => (
-                <a
-                  key={channel.label}
-                  href={channel.href}
-                  className="premium-card flex items-center gap-4 p-4 sm:p-5"
-                >
-                  <div className="premium-icon-box flex h-11 w-11 shrink-0 items-center justify-center text-blue-600 sm:h-12 sm:w-12">
-                    <Icon name={channel.icon} size={20} className="text-blue-600" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 sm:text-sm">
-                      {channel.label}
+              {contactChannels.map((channel) => {
+                const content = (
+                  <>
+                    <div className="premium-icon-box flex h-11 w-11 shrink-0 items-center justify-center text-blue-600 sm:h-12 sm:w-12">
+                      <Icon name={channel.icon} size={20} className="text-blue-600" />
                     </div>
-                    <div className="mt-1 truncate text-base font-semibold text-slate-950 sm:text-lg">
-                      {channel.value}
+                    <div className="min-w-0">
+                      <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 sm:text-sm">
+                        {channel.label}
+                      </div>
+                      <div className="mt-1 flex min-h-7 items-center text-base font-semibold text-slate-950 sm:text-lg">
+                        {channel.type === "protected-email" ? (
+                          <ProtectedEmailText />
+                        ) : (
+                          <span className="truncate">{channel.value}</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </a>
-              ))}
+                  </>
+                );
+
+                return channel.type === "protected-email" ? (
+                  <ProtectedEmailButton
+                    key={channel.label}
+                    className="premium-card flex w-full items-center gap-4 p-4 text-left sm:p-5"
+                  >
+                    {content}
+                  </ProtectedEmailButton>
+                ) : (
+                  <a
+                    key={channel.label}
+                    href={channel.href}
+                    className="premium-card flex items-center gap-4 p-4 sm:p-5"
+                  >
+                    {content}
+                  </a>
+                );
+              })}
             </div>
 
             <div className="mt-6 premium-card p-5 sm:p-6">
@@ -68,7 +89,10 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="premium-card p-5 sm:p-7 lg:p-8">
+          <div
+            id={CONTACT_FORM_TARGET_ID}
+            className="premium-card scroll-mt-24 p-5 sm:p-7 lg:p-8"
+          >
             <h3 className="mb-6 font-display text-xl font-semibold text-slate-950 sm:text-2xl">
               Napište nám
             </h3>

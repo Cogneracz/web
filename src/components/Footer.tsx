@@ -9,6 +9,7 @@ import {
   CalendarCheck,
   LinkedinIcon,
 } from "./Icon";
+import ProtectedEmailButton, { ProtectedEmailText } from "./ProtectedEmailButton";
 
 const navigationLinks = [
   { href: "#home", label: "Domů" },
@@ -69,13 +70,12 @@ export default function Footer() {
               >
                 <LinkedinIcon size={16} />
               </a>
-              <a
-                href="mailto:info@cognera.cz"
+              <ProtectedEmailButton
                 aria-label="Email"
                 className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all hover:border-blue-400 hover:bg-transparent hover:text-blue-600"
               >
                 <Mail size={16} aria-hidden="true" />
-              </a>
+              </ProtectedEmailButton>
             </div>
           </div>
 
@@ -164,12 +164,11 @@ export default function Footer() {
                 <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-slate-200">
                   <Mail size={14} className="text-blue-600" aria-hidden="true" />
                 </div>
-                <a
-                  href="mailto:info@cognera.cz"
-                  className="transition-colors hover:text-blue-600"
+                <ProtectedEmailButton
+                  className="inline-flex min-h-6 items-center transition-colors hover:text-blue-600"
                 >
-                  info@cognera.cz
-                </a>
+                  <ProtectedEmailText />
+                </ProtectedEmailButton>
               </li>
               <li className="flex items-center">
                 <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-slate-200">

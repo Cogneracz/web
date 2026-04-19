@@ -25,12 +25,21 @@ export interface ProjectRef {
   logo?: string;
 }
 
-export interface ContactChannel {
+export interface LinkContactChannel {
+  type: "link";
   icon: string;
   label: string;
   value: string;
   href: string;
 }
+
+export interface ProtectedEmailContactChannel {
+  type: "protected-email";
+  icon: string;
+  label: string;
+}
+
+export type ContactChannel = LinkContactChannel | ProtectedEmailContactChannel;
 
 export interface TechCategory {
   name: string;
@@ -351,12 +360,12 @@ export const techCategories: TechCategory[] = [
 
 export const contactChannels: ContactChannel[] = [
   {
+    type: "protected-email",
     icon: "fa-envelope",
     label: "Email",
-    value: "info@cognera.cz",
-    href: "mailto:info@cognera.cz",
   },
   {
+    type: "link",
     icon: "fa-phone",
     label: "Telefon",
     value: "+420 607 204 423",

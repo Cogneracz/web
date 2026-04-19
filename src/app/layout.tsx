@@ -107,7 +107,6 @@ const organizationJsonLd = {
   alternateName: "Cognera s.r.o.",
   url: "https://cognera.cz",
   logo: "https://cognera.cz/logo-128.png",
-  email: "info@cognera.cz",
   taxID: "CZ23743514",
   vatID: "CZ23743514",
   identifier: [

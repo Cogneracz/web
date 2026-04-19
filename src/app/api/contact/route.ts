@@ -180,7 +180,7 @@ async function sendEmail(
       <h2 style="color: #0f172a;">Nová zpráva z kontaktního formuláře</h2>
       <table style="width: 100%; border-collapse: collapse;">
         <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Jméno:</td><td style="padding: 8px 0;">${data.name}</td></tr>
-        <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Email:</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
+        <tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Email:</td><td style="padding: 8px 0;">${data.email}</td></tr>
         ${data.phone ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Telefon:</td><td style="padding: 8px 0;">${data.phone}</td></tr>` : ""}
         ${data.company ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #64748b;">Společnost:</td><td style="padding: 8px 0;">${data.company}</td></tr>` : ""}
       </table>
