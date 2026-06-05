@@ -157,18 +157,11 @@ h3 {
    GLASSMORPHISM NAVIGATION
    ============================================ */
 
+/* Solid (opaque) white nav across all breakpoints — no translucency/blur. */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.75);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-  transform: translateZ(0);
-  will-change: backdrop-filter;
-}
-
-@supports (backdrop-filter: blur(16px)) {
-  .glass-nav {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-  }
+  background: #ffffff;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
 }
 
 /* ============================================
@@ -485,17 +478,6 @@ h3 {
     width: 100%;
     justify-content: center;
     text-align: center;
-  }
-}
-
-/* Solid (opaque) nav on mobile — content must never bleed through the bar. */
-@media (max-width: 1023px) {
-  .glass-nav {
-    background: #ffffff;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom-color: rgba(226, 232, 240, 0.9);
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
   }
 }
 
