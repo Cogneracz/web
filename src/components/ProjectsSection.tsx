@@ -17,7 +17,7 @@ export default function ProjectsSection() {
           description="Agentic engineering není teorie. Tady jsou systémy, které jsme tímto způsobem navrhli a dodali do provozu — jen zlomek toho, co reálně běží v produkci našich klientů."
         />
 
-        <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-2">
           {projects.map((project) => (
             <article key={project.name} className="premium-card p-5 sm:p-7 lg:p-8">
               {project.logo && (

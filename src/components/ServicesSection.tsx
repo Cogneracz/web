@@ -1,5 +1,5 @@
 import SectionIntro from "./SectionIntro";
-import Icon from "./Icon";
+import Icon, { ArrowRight } from "./Icon";
 import { serviceCards } from "@/lib/site-content";
 
 export default function ServicesSection() {
@@ -19,7 +19,10 @@ export default function ServicesSection() {
 
         <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-6">
           {serviceCards.map((service, index) => (
-            <article key={service.title} className="premium-card p-5 sm:p-7 lg:p-8">
+            <article
+              key={service.title}
+              className="group premium-card p-5 sm:p-7 lg:p-8"
+            >
               <div className="flex items-start justify-between gap-4">
                 <div className="premium-icon-box flex h-11 w-11 items-center justify-center text-blue-600 sm:h-12 sm:w-12">
                   <Icon name={service.icon} size={20} className="text-blue-600" />
@@ -30,11 +33,28 @@ export default function ServicesSection() {
               </div>
 
               <h3 className="mt-4 font-display text-xl font-semibold text-slate-950 sm:mt-6 sm:text-2xl">
-                {service.title}
+                <span className="hover-mark">{service.title}</span>
               </h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600 sm:mt-3 sm:text-base">
+              <p className="mt-2 line-clamp-3 text-sm leading-7 text-slate-600 sm:mt-3 sm:text-base">
                 {service.description}
               </p>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600 transition-colors group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-blue-700"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                    {tag}
+                  </span>
+                ))}
+                <ArrowRight
+                  size={16}
+                  aria-hidden="true"
+                  className="ml-auto text-blue-600 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
+                />
+              </div>
             </article>
           ))}
         </div>
