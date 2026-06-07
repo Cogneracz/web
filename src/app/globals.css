@@ -430,7 +430,7 @@ h3 {
 }
 
 /* ============================================
-   SCROLLYTELLING — internal tools pipeline
+   SCROLLYTELLING — internal tools rail
    ============================================ */
 
 .tools-step-card {
@@ -440,22 +440,6 @@ h3 {
 /* Dim inactive step cards only once the motion layer is live (desktop). */
 .tools-motion .tools-step:not(.is-active) .tools-step-card {
   opacity: 0.4;
-}
-
-/* Pre-init guard: before GSAP runs (desktop + motion only), render the SVG in
-   its undrawn start state so the finished pipeline never flashes pre-hydration.
-   Scoped away from mobile + reduced-motion, which intentionally show it static.
-   Nodes are dimmed via opacity only — no transforms (the ring "pop" animates
-   the circle radius, never a transform, to avoid SVG transform-origin drift). */
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .tools-preinit .tools-draw,
-  .tools-preinit .tools-spark {
-    opacity: 0;
-  }
-
-  .tools-preinit [data-node] {
-    opacity: 0.35;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
