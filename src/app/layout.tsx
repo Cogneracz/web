@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import StructuredData from "@/components/StructuredData";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -99,63 +100,6 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Cognera",
-  legalName: "Cognera s.r.o.",
-  alternateName: "Cognera s.r.o.",
-  url: "https://cognera.cz",
-  logo: "https://cognera.cz/logo-128.png",
-  taxID: "CZ23743514",
-  vatID: "CZ23743514",
-  identifier: [
-    { "@type": "PropertyValue", propertyID: "IČO", value: "23743514" },
-    { "@type": "PropertyValue", propertyID: "DIČ", value: "CZ23743514" },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Panská 571",
-    addressLocality: "Chýnov",
-    postalCode: "391 55",
-    addressCountry: "CZ",
-  },
-  description:
-    "Český softwarový dům zaměřený na Agentic Engineering — vývoj enterprise software, kde AI agenti zrychlují rutinní vývoj a senioři řídí architekturu, kvalitu a bezpečnost.",
-  knowsAbout: [
-    "Agentic Engineering",
-    "AI agenti",
-    "Spring Boot",
-    "ASP.NET Core",
-    "React",
-    "Next.js",
-    "PostgreSQL",
-    "Oracle",
-    "CRM",
-    "ERP",
-    "Informační systémy",
-    "ARES",
-    "RUIAN",
-    "ISDS",
-    "ISDOC",
-  ],
-  areaServed: { "@type": "Country", name: "Czech Republic" },
-  sameAs: [
-    "https://www.linkedin.com/company/cognera-s-r-o/",
-    "https://github.com/Cogneracz",
-    "https://rejstrik-firem.kurzy.cz/23743514/cognera-sro/",
-  ],
-};
-
-const websiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Cognera",
-  url: "https://cognera.cz",
-  inLanguage: "cs-CZ",
-  publisher: { "@type": "Organization", name: "Cognera" },
-};
-
 export const viewport: Viewport = {
   themeColor: "#ffffff",
   colorScheme: "light",
@@ -179,14 +123,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Přeskočit na obsah
         </a>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
+        <StructuredData />
         {children}
       </body>
     </html>

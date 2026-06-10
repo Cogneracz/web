@@ -1,0 +1,33 @@
+# Cognera
+
+> Cognera s.r.o. je český softwarový dům zaměřený na Agentic Engineering — vývoj enterprise software na zakázku, kde AI agenti generují kód, testy a dokumentaci a seniorní vývojáři a architekti řídí architekturu, kvalitu a bezpečnost.
+
+Cognera vyvíjí CRM, ERP a informační systémy na Javě (Spring Boot), .NET (ASP.NET Core) a Node.js (NestJS), s moderním React/Next.js frontendem. Specializuje se na AI integrace a automatizace (RAG, LLM, AI asistenti) a na integraci s českými systémy a registry.
+
+## Co děláme
+- Agentic SW vývoj — kód generují AI agenti, architekturu a code review řídí senioři a architekti; junioři a medioři se podílejí na vývoji a testovacích scénářích
+- Enterprise systémy — CRM, ERP, informační systémy a interní nástroje navržené podle reálného provozu firmy
+- AI integrace & automatizace — RAG, dokumentové workflow, AI asistenti, automatizace procesů
+- Převzetí & rozvoj — stabilizace architektury, zavedení testů a CI/CD u existujících projektů
+
+## Jak pracujeme (Agentic Engineering)
+1. AI agenti generují kód, testy a dokumentaci a pokrývají rutinní práci
+2. Seniorní vývojáři a architekti řídí architekturu, bezpečnost a kvalitu a dělají code review každého PR
+3. Dodávka s jistotou — automatizované testy, CI/CD pipeline a monitoring od prvního nasazení
+
+## Technologie
+AI: Claude Code, Claude Agent SDK, Codex, Gemini API, OpenAI API, MCP servery. Backend: Spring Boot, ASP.NET Core, NestJS, Fastify, FastAPI. Frontend: React 19, Next.js 16, Tailwind CSS 4, Material-UI. Data: PostgreSQL, Oracle, MS SQL, Redis, Elasticsearch, RabbitMQ, MinIO. DevOps: Docker, Kubernetes, GitHub Actions, Azure DevOps, OpenTelemetry.
+
+## Reference
+- Centera — provozní systém pro majitele a správce nákupních center (nájemní cyklus, hromadná fakturace, indexace nájmu dle CPI, rozúčtování energií, reporty pohledávek). V aktivní produkci. https://centera.cz
+- Cognera CRM — provozní páteř Cognery a živý důkaz agentního vývoje (výkazy práce z commitů, projekty, fakturace, RAG chat nad firemní dokumentací)
+
+## Vlastní AI nástroje
+Anvil (příprava zadání), Forge (autonomní vývojová platforma, multi-model/multi-harness), Temper (autonomní QA), CogneraSpec (spec-driven CLI), Meeting Agent, Context Servers (MCP).
+
+## Kontakt
+- Telefon: +420 607 204 423
+- Web: https://cognera.cz
+- Firma: Cognera s.r.o., Panská 571, 391 55 Chýnov, IČO 23743514, DIČ CZ23743514
+- LinkedIn: https://www.linkedin.com/company/cognera-s-r-o
+- GitHub: https://github.com/Cogneracz

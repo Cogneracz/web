@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifySolution } from "altcha-lib";
-import nodemailer from "nodemailer";
 import {
   validateCsrfToken,
   validateJsToken,
@@ -9,6 +8,10 @@ import {
   getClientIp,
 } from "@/lib/security";
 import { contactFormSchema, analyzeContent } from "@/lib/validation";
+import { sendContactMail } from "@/lib/graph-mailer";
+
+// @azure/identity is Node-only; keep this route off the edge runtime.
+export const runtime = "nodejs";
 
 function log(level: string, message: string, data?: Record<string, unknown>) {
   const entry = { ts: new Date().toISOString(), level, message, ...data };
@@ -125,8 +128,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true }); // Silent accept
     }
 
-    // 11. Send email
-    await sendEmail(data, ip);
+    // 11. Send email via Microsoft Graph
+    await sendContactMail({
+      subject: `Kontaktní formulář — ${data.name}`,
+      bodyHtml: buildContactHtml(data, ip),
+      replyToEmail: data.email,
+      replyToName: data.name,
+    });
     log("info", "Contact form submitted successfully", {
       ip,
       email: data.email,
@@ -145,7 +153,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function sendEmail(
+function buildContactHtml(
   data: {
     name: string;
     email: string;
@@ -154,28 +162,8 @@ async function sendEmail(
     message: string;
   },
   ip: string
-) {
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
-  const contactEmail = process.env.CONTACT_EMAIL || "info@cognera.cz";
-
-  if (!smtpHost || !smtpUser || !smtpPass) {
-    if (process.env.NODE_ENV !== "production") {
-      log("info", "DEV: Would send email", { to: contactEmail, data });
-      return;
-    }
-    throw new Error("SMTP not configured");
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: smtpHost,
-    port: parseInt(process.env.SMTP_PORT || "587", 10),
-    secure: process.env.SMTP_SECURE === "true",
-    auth: { user: smtpUser, pass: smtpPass },
-  });
-
-  const html = `
+): string {
+  return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
       <h2 style="color: #0f172a;">Nová zpráva z kontaktního formuláře</h2>
       <table style="width: 100%; border-collapse: collapse;">
@@ -191,12 +179,4 @@ async function sendEmail(
       <p style="margin-top: 16px; font-size: 12px; color: #94a3b8;">IP: ${ip} | ${new Date().toISOString()}</p>
     </div>
   `;
-
-  await transporter.sendMail({
-    from: process.env.SMTP_FROM || smtpUser,
-    to: contactEmail,
-    replyTo: data.email,
-    subject: `Kontaktní formulář — ${data.name}`,
-    html,
-  });
 }
