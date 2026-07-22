@@ -68,6 +68,24 @@ export default function InternalToolsSection() {
   const [active, setActive] = useState(0);
   const rootRef = useRef<HTMLElement>(null);
 
+  // Rail click → scroll the chosen step card to the viewport center. The
+  // active index is set immediately so the rail responds even when reduced
+  // motion disables the ScrollTriggers; with motion on, the triggers take
+  // over during the scroll and settle on the same step.
+  const scrollToStep = (i: number) => {
+    const step =
+      rootRef.current?.querySelectorAll<HTMLElement>("[data-step]")[i];
+    if (!step || typeof step.scrollIntoView !== "function") return;
+    setActive(i);
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    step.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+  };
+
   useGSAP(
     () => {
       const root = rootRef.current;
@@ -161,6 +179,10 @@ export default function InternalToolsSection() {
         <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
           Anvil → Forge → Temper → dodávka. Scrollni a sleduj, jak změna projde
           celým stackem.
+          <span className="hidden lg:inline">
+            {" "}
+            Kliknutím v liště přeskočíš rovnou na krok, který tě zajímá.
+          </span>
         </p>
       </div>
 
@@ -168,56 +190,64 @@ export default function InternalToolsSection() {
       <div className="relative mx-auto mt-10 max-w-7xl lg:mt-16 lg:grid lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
         {/* Sticky progress rail (desktop). Every beat is its own node, the
             active one lit — so the visual always matches the card being read.
-            Decorative: the cards carry the real content, so it's hidden from
-            assistive tech to avoid duplicate announcements. */}
-        <div
-          aria-hidden="true"
+            Each node is a button: click jumps straight to that step's card. */}
+        <nav
+          aria-label="Kroky AI stacku"
           className="top-0 hidden h-screen flex-col justify-center lg:sticky lg:flex"
         >
           <ol className="relative">
             {/* connector spine behind the node icons */}
-            <span className="absolute bottom-7 left-[1.375rem] top-7 w-px bg-slate-200" />
+            <span
+              aria-hidden="true"
+              className="absolute bottom-7 left-[1.375rem] top-7 w-px bg-slate-200"
+            />
             {STEPS.map((s, i) => {
               const state =
                 i === active ? "active" : i < active ? "done" : "todo";
               return (
-                <li
-                  key={s.toolName}
-                  className="relative flex items-center gap-4 py-1.5"
-                >
-                  <span
-                    className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-all duration-300 ${
-                      state === "active"
-                        ? "scale-110 border-blue-600 bg-white text-blue-600 shadow-md shadow-blue-500/20"
-                        : state === "done"
-                          ? "border-blue-200 bg-blue-50 text-blue-500"
-                          : "border-slate-200 bg-white text-slate-300"
-                    }`}
+                <li key={s.toolName} className="relative">
+                  <button
+                    type="button"
+                    data-rail-index={i}
+                    aria-current={state === "active" ? "step" : undefined}
+                    onClick={() => scrollToStep(i)}
+                    className="group/rail flex w-full items-center gap-4 rounded-xl py-1.5 text-left"
                   >
-                    <Icon name={s.icon} size={19} />
-                    {state === "active" && (
-                      <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-white" />
-                    )}
-                  </span>
-                  <span
-                    className={`font-display text-lg font-semibold transition-colors duration-300 ${
-                      state === "active"
-                        ? "text-slate-950"
-                        : state === "done"
-                          ? "text-slate-500"
-                          : "text-slate-400"
-                    }`}
-                  >
-                    {s.toolName}
-                  </span>
+                    <span
+                      className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-all duration-300 ${
+                        state === "active"
+                          ? "scale-110 border-blue-600 bg-white text-blue-600 shadow-md shadow-blue-500/20"
+                          : state === "done"
+                            ? "border-blue-200 bg-blue-50 text-blue-500 group-hover/rail:border-blue-400 group-hover/rail:text-blue-600"
+                            : "border-slate-200 bg-white text-slate-300 group-hover/rail:border-blue-300 group-hover/rail:text-blue-500"
+                      }`}
+                    >
+                      <Icon name={s.icon} size={19} />
+                      {state === "active" && (
+                        <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-white" />
+                      )}
+                    </span>
+                    <span
+                      className={`font-display text-lg font-semibold transition-colors duration-300 ${
+                        state === "active"
+                          ? "text-slate-950"
+                          : state === "done"
+                            ? "text-slate-500 group-hover/rail:text-slate-800"
+                            : "text-slate-400 group-hover/rail:text-slate-700"
+                      }`}
+                    >
+                      {s.toolName}
+                    </span>
+                  </button>
                 </li>
               );
             })}
           </ol>
-        </div>
+        </nav>
 
-        {/* Stepped cards */}
-        <ol className="relative">
+        {/* Stepped cards. role="list" because Tailwind preflight strips
+            list-style and WebKit then drops the list semantics. */}
+        <ol role="list" className="relative">
           {STEPS.map((s) => (
             <li
               key={s.toolName}

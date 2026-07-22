@@ -19,11 +19,14 @@ Cognera vyvíjí CRM, ERP a informační systémy na Javě (Spring Boot), .NET (
 AI: Claude Code, Claude Agent SDK, Codex, Gemini API, OpenAI API, MCP servery. Backend: Spring Boot, ASP.NET Core, NestJS, Fastify, FastAPI. Frontend: React 19, Next.js 16, Tailwind CSS 4, Material-UI. Data: PostgreSQL, Oracle, MS SQL, Redis, Elasticsearch, RabbitMQ, MinIO. DevOps: Docker, Kubernetes, GitHub Actions, Azure DevOps, OpenTelemetry.
 
 ## Reference
-- Centera — provozní systém pro majitele a správce nákupních center (nájemní cyklus, hromadná fakturace, indexace nájmu dle CPI, rozúčtování energií, reporty pohledávek). V aktivní produkci. https://centera.cz
-- Cognera CRM — provozní páteř Cognery a živý důkaz agentního vývoje (výkazy práce z commitů, projekty, fakturace, RAG chat nad firemní dokumentací)
+- Centera — provozní systém pro majitele a správce nákupních center: nájemní cyklus, hromadná fakturace s QR Platbou, indexace nájmů, automatické párování plateb, rozúčtování energií z odečtů měřičů; integrace ARES, Stormware Pohoda a kurzy ČNB. 199 API endpointů, 5 600+ automatizovaných testů. V aktivní produkci. https://centera.cz
+- Cognera CRM — provozní páteř Cognery a živý důkaz agentního vývoje: výkazy práce navrhované z GitHub commitů, obchodní pipeline, fakturace s upomínkami, finanční reporting a 16 AI funkcí včetně konverzačního asistenta respektujícího oprávnění uživatele. 154 API endpointů, 4 000+ testů, WCAG 2.2 AA.
+- InvoiceAI — AI vytěžování přijatých faktur pro české účetnictví: příjem e-mailem, přes API nebo v ISDOC, extrakce dat pomocí AI modelů (Claude, GPT, Gemini) s fallbackem a prahem spolehlivosti, kontrola ve split-view rozhraní, export do Money S3 a Pohody, validace dodavatelů proti ARES. Multi-tenant provoz pro účetní kanceláře.
+- CompanyRadar — monitoring obchodních rejstříků ČR a SR (justice.cz, ARES, Merk, orsr.sk): automatická detekce a kategorizace změn, organigramy vlastnické struktury, regulatorní výkazy a exporty. V produkci monitoruje finanční skupinu se 170+ společnostmi.
+- Cognera Helpdesk — zákaznická podpora napojená přímo na vývoj: portál s bezheslovým přihlášením, widget se screenshotem, REST API; tickety se obousměrně synchronizují s GitHub issues, zákazník vidí reálný stav vývoje včetně roadmapy. 729 automatizovaných testů.
 
 ## Vlastní AI nástroje
-Anvil (příprava zadání), Forge (autonomní vývojová platforma, multi-model/multi-harness), Temper (autonomní QA), CogneraSpec (spec-driven CLI), Meeting Agent, Context Servers (MCP).
+Anvil (příprava zadání), Forge (autonomní vývojová platforma, multi-model/multi-harness), Temper (autonomní QA), CogneraSpec (spec-driven CLI), Agent System (orchestrace agentů), Meeting Agent, Prompt & Rules Library, Context Servers (MCP).
 
 ## Kontakt
 - Telefon: +420 607 204 423

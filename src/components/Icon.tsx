@@ -35,6 +35,9 @@ import {
   Anvil,
   ClipboardCheck,
   Flame,
+  Radar,
+  Headset,
+  ReceiptText,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -65,6 +68,9 @@ const iconMap: Record<string, LucideIcon> = {
   "fa-anvil": Anvil,
   "fa-clipboard-check": ClipboardCheck,
   "fa-flame": Flame,
+  "fa-radar": Radar,
+  "fa-headset": Headset,
+  "fa-receipt": ReceiptText,
 };
 
 interface IconProps {

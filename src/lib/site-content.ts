@@ -17,12 +17,27 @@ export interface ProcessStep {
   icon: string;
 }
 
+export interface ProjectMetric {
+  value: string;
+  label: string;
+}
+
 export interface ProjectRef {
   name: string;
   subtitle: string;
   description: string;
+  /** Short domain badge, e.g. "Proptech · ERP". */
+  domain: string;
+  /** 3–5 check-marked capability bullets (the featured card fits more). */
+  highlights: string[];
+  /** 2–3 scale metrics rendered as a stat strip. */
+  metrics: ProjectMetric[];
   tags: string[];
   logo?: string;
+  /** Icon fallback used when the project has no logo. */
+  icon: string;
+  /** Featured projects span the full grid width. */
+  featured?: boolean;
 }
 
 export interface LinkContactChannel {
@@ -68,6 +83,7 @@ export const navLinks: NavLink[] = [
 export const heroStats = [
   { value: "100%", label: "PR pod kontrolou seniora" },
   { value: "8+", label: "Vlastních AI nástrojů" },
+  { value: "12 000+", label: "Testů v našich systémech" },
 ];
 
 export const serviceCards: ServiceCard[] = [
@@ -130,24 +146,105 @@ export const projects: ProjectRef[] = [
     name: "Centera",
     subtitle: "Provozní systém majitelů a správců nákupních center",
     description:
-      "Řídí celý nájemní cyklus nákupního centra — správa nájemních smluv s dodatky a variantami, hromadná měsíční fakturace stovek kontraktů jediným kliknutím, automatická inflační indexace nájmů podle CPI se schvalovacím workflow, rozúčtování energií mezi nájemce podle plochy i skutečně naměřené spotřeby, hlídání pohledávek a finanční reporty v reálném čase, vyúčtování záloh i hromadné generování dokumentů ze šablon. Co bývala několikahodinová manuální práce s tabulkami — faktury pro celé centrum, přepočet nájmů po zveřejnění nového indexu, rozdělení spotřeby mezi desítky nájemců — Centera zvládne během minut a s jasnou auditní stopou každého kroku. V aktivní produkci u českých provozovatelů obchodních center, s kontinuálním rozvojem nových modulů.",
-    tags: ["React 18", "Spring Boot", "PostgreSQL", "Material-UI", "TanStack Query"],
+      "Informační systém třídy ERP, který řídí celý nájemní cyklus nákupního centra — od smlouvy přes hromadnou fakturaci s QR Platbou až po automatické párování plateb, inflační indexaci nájmů podle CPI a rozúčtování energií ze skutečných odečtů měřičů. Co bývala několikahodinová práce s tabulkami — faktury pro celé centrum, přepočet nájmů po novém indexu, rozdělení spotřeby mezi desítky nájemců — zvládne Centera během minut, s auditní stopou každého kroku. Nahrazuje letitý legacy systém a je v aktivní produkci u českých provozovatelů obchodních center.",
+    domain: "Proptech · ERP",
+    highlights: [
+      "Hromadná fakturace stovek kontraktů jedním kliknutím, PDF s QR Platbou",
+      "Indexace nájmů s náhledem, reverzibilitou a generováním indexačních dopisů",
+      "Rozúčtování energií z odečtů měřičů a roční vyúčtování záloh",
+      "Automatické párování plateb na doklady s průvodcem a návrhy",
+      "Integrace na ARES, Stormware Pohoda a denní kurzy ČNB",
+    ],
+    metrics: [
+      { value: "5 600+", label: "automatizovaných testů" },
+      { value: "199", label: "API endpointů" },
+      { value: "172", label: "databázových migrací" },
+    ],
+    tags: ["Java 21", "Spring Boot", "Spring Modulith", "React 18", "PostgreSQL"],
     logo: "/centera-logo.png",
+    icon: "fa-building",
+    featured: true,
   },
   {
     name: "Cognera CRM",
     subtitle: "Provozní páteř Cognery a živý důkaz agentního vývoje",
     description:
-      "Jednotné prostředí, kde se řídí celá Cognera — výkazy práce s automatickým návrhem z commitů i záznamů ze schůzek, projekty napojené na repozitáře, rozpočty, hodinové sazby a schvalovací workflow faktur, zrcadlení issues, portál pro zákazníky a AI chat nad firemní dokumentací s RAG vyhledáváním. Postavené vlastními agenty na vlastních nástrojích — naše CRM je zároveň referenční implementace agentního vývoje v praxi.",
-    logo: "/logo-256.png",
-    tags: [
-      "React 19",
-      "NestJS 11",
-      "PostgreSQL + pgvector",
-      "MinIO",
-      "BullMQ",
-      "Claude SDK",
+      "Jedno prostředí, které řídí celou firmu — výkazy práce s automatickými návrhy z commitů, projekty napojené na GitHub, obchodní pipeline, fakturace s upomínkami i finanční reporting. Nad tím AI vrstva se 16 funkcemi: souhrny commitů, AI review pull requestů, návrhy obchodních e-mailů i konverzační asistent, který respektuje oprávnění přihlášeného uživatele. Postaveno vlastními agenty na vlastních nástrojích — referenční implementace agentního vývoje v praxi.",
+    domain: "Interní systém · AI vrstva",
+    highlights: [
+      "16 AI funkcí — od souhrnů commitů po asistenta s 10 nástroji",
+      "Výkazy práce navrhované automaticky z GitHub aktivity",
+      "GDPR by design: validovaný registr zpracování, retence, audit log",
+      "Přístupnost WCAG 2.2 AA a plná observabilita provozu",
     ],
+    metrics: [
+      { value: "4 000+", label: "testů vč. e2e" },
+      { value: "154", label: "API endpointů" },
+      { value: "16", label: "AI funkcí" },
+    ],
+    tags: ["React 19", "NestJS 11", "PostgreSQL", "BullMQ", "OpenTelemetry"],
+    logo: "/logo-256.png",
+    icon: "fa-network-wired",
+  },
+  {
+    name: "InvoiceAI",
+    subtitle: "AI vytěžování přijatých faktur pro české účetnictví",
+    description:
+      "Automatizuje zpracování přijatých faktur od příjmu po zaúčtování. Doklady přitečou e-mailem, přes API nebo v ISDOC, AI modely z nich vytěží strukturovaná data a účetní je ve split-view rozhraní jen zkontroluje. Schválené doklady míří rovnou do Money S3 nebo Pohody. Jedna multi-tenant instalace obslouží celou účetní kancelář — a poslední slovo má vždy člověk.",
+    domain: "Účetnictví · AI vytěžování",
+    highlights: [
+      "Tři AI provideři (Claude, GPT, Gemini) s fallbackem a prahem spolehlivosti",
+      "Export do Money S3 i Pohoda mServer, import a export ISDOC",
+      "Validace dodavatelů proti ARES s automatickým doplněním údajů",
+      "Schvalovací workflow s rolemi a plným auditem každého kroku",
+    ],
+    metrics: [
+      { value: "3", label: "AI provideři" },
+      { value: "60", label: "API endpointů" },
+      { value: "6", label: "uživatelských rolí" },
+    ],
+    tags: ["ASP.NET Core 10", "React 19", "PostgreSQL", "EF Core", "MUI 7"],
+    icon: "fa-receipt",
+  },
+  {
+    name: "CompanyRadar",
+    subtitle: "Monitoring obchodních rejstříků a skupinový reporting",
+    description:
+      "Hlídá změny ve firmách napříč českými a slovenskými registry — justice.cz, ARES, Merk i orsr.sk. Změny detekuje porovnáváním snapshotů, automaticky je kategorizuje (fúze, změny statutárů, insolvence…) a notifikuje. Z vlastnických podílů rekonstruuje strukturu celé skupiny do interaktivních organigramů a generuje regulatorní výkazy. V produkci monitoruje finanční skupinu s více než 170 společnostmi.",
+    domain: "Compliance · Monitoring",
+    highlights: [
+      "5 napojených registrů a datových zdrojů napříč ČR a Slovenskem",
+      "11 kategorií změn detekovaných porovnáváním snapshotů",
+      "Organigramy vlastnické struktury s exportem do SVG a PDF",
+      "Regulatorní výkazy a exporty do Excelu, PDF i Wordu",
+    ],
+    metrics: [
+      { value: "170+", label: "monitorovaných firem" },
+      { value: "1 480+", label: "testů" },
+      { value: "5", label: "napojených zdrojů dat" },
+    ],
+    tags: ["Next.js 16", "React 19", "Prisma 7", "PostgreSQL", "Playwright"],
+    icon: "fa-radar",
+  },
+  {
+    name: "Cognera Helpdesk",
+    subtitle: "Zákaznická podpora napojená přímo na vývoj",
+    description:
+      "Helpdesk, který propojí hlášení zákazníka přímo s GitHub issue vývojáře — bez ručního přepisování. Požadavky přitékají třemi kanály: portálem s bezheslovým přihlášením, widgetem vestavěným přímo v aplikaci, který přiloží i screenshot obrazovky, a zabezpečeným API. Stav vývoje se obousměrně synchronizuje zpět, takže zákazník v portálu vidí reálný průběh práce včetně roadmapy.",
+    domain: "Podpora · GitHub bridge",
+    highlights: [
+      "Tři kanály příjmu: portál, widget se screenshotem, REST API",
+      "Obousměrná synchronizace s GitHubem včetně retry a deduplikace",
+      "Striktní multi-tenant izolace dat: klient → produkt → ticket",
+      "Antivirová kontrola příloh a anti-bot ochrana formulářů",
+    ],
+    metrics: [
+      { value: "729", label: "automatizovaných testů" },
+      { value: "58", label: "API endpointů" },
+      { value: "3", label: "kanály příjmu" },
+    ],
+    tags: ["NestJS 11", "React 19", "PostgreSQL", "BullMQ", "GitHub App"],
+    icon: "fa-headset",
   },
 ];
 

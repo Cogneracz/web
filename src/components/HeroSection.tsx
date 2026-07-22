@@ -59,7 +59,7 @@ export default function HeroSection() {
             </a>
           </div>
 
-          <div className="hero-fade-in-more-delayed mt-10 flex justify-center gap-10 border-t border-slate-200 pt-8 sm:mt-12 lg:justify-start">
+          <div className="hero-fade-in-more-delayed mt-10 flex flex-wrap justify-center gap-x-10 gap-y-6 border-t border-slate-200 pt-8 sm:mt-12 lg:justify-start">
             {heroStats.map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
                 <div className="font-display text-3xl font-semibold tabular-nums text-slate-950 sm:text-4xl">

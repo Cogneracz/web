@@ -1,5 +1,6 @@
 import SectionIntro from "./SectionIntro";
 import Icon, { ArrowRight } from "./Icon";
+import TagChip from "./TagChip";
 import { serviceCards } from "@/lib/site-content";
 
 export default function ServicesSection() {
@@ -41,13 +42,7 @@ export default function ServicesSection() {
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600 transition-colors group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-blue-700"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                    {tag}
-                  </span>
+                  <TagChip key={tag} label={tag} />
                 ))}
                 <ArrowRight
                   size={16}

@@ -1,7 +1,7 @@
 import SectionIntro from "./SectionIntro";
 import ContactForm from "./ContactForm";
 import Icon from "./Icon";
-import { Check } from "./Icon";
+import CheckList from "./CheckList";
 import { contactChannels } from "@/lib/site-content";
 import { CONTACT_FORM_TARGET_ID } from "@/lib/contact-target";
 import ProtectedEmailButton, { ProtectedEmailText } from "./ProtectedEmailButton";
@@ -68,24 +68,15 @@ export default function ContactSection() {
               <h3 className="font-display text-lg font-semibold text-slate-950">
                 Co obvykle řešíme
               </h3>
-              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                <li className="flex gap-2.5">
-                  <Check size={12} className="mt-1.5 shrink-0 text-blue-600" aria-hidden="true" />
-                  Nový CRM, ERP nebo interní informační systém
-                </li>
-                <li className="flex gap-2.5">
-                  <Check size={12} className="mt-1.5 shrink-0 text-blue-600" aria-hidden="true" />
-                  AI vrstva nad dokumenty nebo zákaznickými daty
-                </li>
-                <li className="flex gap-2.5">
-                  <Check size={12} className="mt-1.5 shrink-0 text-blue-600" aria-hidden="true" />
-                  Převzetí projektu a stabilizace architektury
-                </li>
-                <li className="flex gap-2.5">
-                  <Check size={12} className="mt-1.5 shrink-0 text-blue-600" aria-hidden="true" />
-                  Integrace s českými systémy (ARES, ISDS, ISDOC)
-                </li>
-              </ul>
+              <CheckList
+                className="mt-3"
+                items={[
+                  "Nový CRM, ERP nebo interní informační systém",
+                  "AI vrstva nad dokumenty nebo zákaznickými daty",
+                  "Převzetí projektu a stabilizace architektury",
+                  "Integrace s českými systémy (ARES, ISDS, ISDOC)",
+                ]}
+              />
             </div>
           </div>
 
